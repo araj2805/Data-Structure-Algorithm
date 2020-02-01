@@ -1,0 +1,63 @@
+Problem :
+
+Given a string, find the length of the longest substring without repeating characters.
+
+Example 1:
+
+Input: "abcabcbb"
+Output: 3 
+Explanation: The answer is "abc", with the length of 3. 
+Example 2:
+
+Input: "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+Example 3:
+
+Input: "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3. 
+             Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+
+Solution:
+
+Using Sliding Window Technique.
+
+1.) Declare two indexes left and right and initialize with zero along with Set and maxLength = 0.
+2.) Traverse a string and pick each character from right index.
+3.) If a character doesn’t exist in a set then add them in a set and increment the count of right and update maxLength by max(maxLength, right - left). 
+    Also, keep track of the length of a window.
+4.) If it exists in a set then remove the character from a set and increment the count of left.
+
+Repeat this step until right index reaches length of input string (string is traversed completely) and return maxLength.
+
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        
+        int left = 0;
+        int right = 0;
+
+        int max = 0;
+        
+        int size =  s.length();
+        Set<Character> window = new HashSet<>();
+        
+        while(right != size)
+        {
+            if(window.contains(s.charAt(right)) == false)
+            {
+                window.add(s.charAt(right));
+                right++;
+                max = Math.max(max,right - left);
+            }
+            else
+            {
+                window.remove(s.charAt(left));
+                left++;
+            }
+        }
+        return max;
+    }
+}

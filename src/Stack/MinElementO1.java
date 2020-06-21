@@ -1,5 +1,7 @@
 package Stack;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Stack;
 
 public class MinElementO1 {
@@ -8,15 +10,25 @@ public class MinElementO1 {
 
 
     public static void main(String[] args) {
-        String a = "123";
-//        (min(A[il],A[ir])-A[bot])*(ir-il-1)
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofLocalizedTime(FormatStyle.FULL);
+        DateTimeFormatter formatter3 = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG);
+        DateTimeFormatter formatter4 = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT, FormatStyle.SHORT);
 
+        DateTimeFormatter formatter5 = DateTimeFormatter.BASIC_ISO_DATE;
 
-        for (int i = 0; i < a.length(); i++) {
-//            System.out.print(a.charAt(i));
+        // 2057-08-11
+        DateTimeFormatter isoLocalDate = DateTimeFormatter.ISO_LOCAL_DATE;
+        DateTimeFormatter isoDate = DateTimeFormatter.ISO_DATE;
 
-            System.out.println(Integer.valueOf(a.charAt(i)) + Integer.valueOf(a.charAt(i)));
-        }
+        // 14:30:15.312
+        DateTimeFormatter isoTime = DateTimeFormatter.ISO_TIME;
+        DateTimeFormatter isoLocalTime = DateTimeFormatter.ISO_LOCAL_TIME;
+
+        // 2050-08-11T14:30:15.312
+        DateTimeFormatter isoDateTime = DateTimeFormatter.ISO_DATE_TIME;
+        DateTimeFormatter isoLocaDateTime = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+
 
     }
 

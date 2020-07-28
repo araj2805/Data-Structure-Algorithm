@@ -15,7 +15,7 @@ public class DepthFirstTraversal {
         postorderTraversal(root);
     }
 
-    private static void postorderTraversal(Node root) {
+    public static void postorderTraversal(Node root) {
         if (root != null) {
             postorderTraversal(root.left);
             postorderTraversal(root.right);
@@ -23,7 +23,7 @@ public class DepthFirstTraversal {
         }
     }
 
-    private static void preorderTraversal(Node root) {
+    public static void preorderTraversal(Node root) {
         if (root != null) {
             System.out.print(root.data + " ");
             preorderTraversal(root.left);
@@ -31,7 +31,7 @@ public class DepthFirstTraversal {
         }
     }
 
-    private static void inorderTraversal(Node root) {
+    public static void inorderTraversal(Node root) {
         if (root != null) {
             inorderTraversal(root.left);
             System.out.print(root.data + " ");

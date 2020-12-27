@@ -9,18 +9,21 @@ public class JzzhuChildren450A {
 
         int [] nums = new int[n];
 
-        for(int i = 0; i < n ; i++)
-            nums[i] = sc.nextInt();
 
-        int last = -1;
+        for(int i = 0; i < n ; i++){
+            nums[i] = sc.nextInt();
+            nums[i] = (nums[i] + m - 1) / m;
+        }
+
+        int last = -1, MaxEle = Integer.MIN_VALUE;
 
 
         for(int i = 0; i < n; i++)
         {
-            int temp = nums[i] % m;
-
-//            if(last  < i + 1)
-
+            if(nums[i] >= MaxEle) {
+                MaxEle = nums[i];
+                last = i + 1;
+            }
         }
 
         System.out.println(last);

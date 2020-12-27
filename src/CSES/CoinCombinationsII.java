@@ -15,11 +15,9 @@ public class CoinCombinationsII {
         System.out.println(noOfWays(coins, n, x));
     }
 
-    private static long noOfWays(long[] coins, long n, long x) {
-        return 0;
-    }
 
-    /*private static long noOfWays(long[] coins, long n, long sum) {
+
+    private static long noOfWays(long[] coins, long n, long sum) {
 
         long[][] dp  = new long[(int)n + 1][(int)sum + 1];
 
@@ -44,5 +42,5 @@ public class CoinCombinationsII {
 
 
         return dp[(int)n][(int)sum] % 1000000007;
-    }*/
+    }
 }

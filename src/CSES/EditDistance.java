@@ -4,7 +4,7 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 
-public class BookShopFast {
+public class EditDistance {
 
     /*
      *  Main Method : public static void main
@@ -13,41 +13,53 @@ public class BookShopFast {
     public static void main(String args[]) throws IOException {
 
         Reader sc = new Reader();
-        int n = inputInt(), x = inputInt();
-        int[] prices = new int[n], pages = new int[n];
 
-        for(int i = 0; i < n; i++)
-            prices[i] = inputInt();
-        for(int i = 0; i < n; i++)
-            pages[i] = inputInt();
-        System.out.println(maximumNumberOfPages(prices,pages,n,x));
-//        println(String.valueOf(maximumNumberOfPages(prices,pages,n,x)));
+        String a = sc.readLine(), b = sc.readLine();
+
+        double d = sc.nextDouble();
+
+        System.out.println(solveEditDistance(a,b));
 
         bw.flush();
         bw.close();
     }
 
-    private static int maximumNumberOfPages(int[] prices, int[] pages, int n, int amount) {
+    private static int solveEditDistance(String a, String b) {
 
-        int[][] dp = new int[n + 1][amount + 1];
+        int n = a.length(), m = b.length();
 
-        for(int i = 1; i <= n; i++) {
-            for(int j = 1; j <= amount; j++) {
+        int[][] dp = new int[n + 1][m + 1];
 
-                // Book is not able tp\o be picked so not selecting it.
-                dp[i][j] = dp[i - 1][j];
+        for(int i = 1; i <= n; i++)
+        {
+            dp[i][0] = i;
+        }
+        for(int i = 1; i <= m; i++)
+        {
+            dp[0][i] = i;
+        }
 
-                if(prices[i - 1] <= j) // book can be able to either picked up or not
-                {
-                    dp[i][j] = Math.max(dp[i - 1][j], pages[i - 1] + dp[i - 1][j - prices[i - 1]]);
-                }
-
-
+        for (int i = 1; i <= n; i++) {
+            for(int j = 1; j <= m; j++) {
+                if (a.charAt(i - 1) == b.charAt(j - 1))
+                    dp[i][j] = dp[i - 1][j - 1];
+                else
+                    dp[i][j] = Math.min(dp[i - 1][j], Math.min(dp[i][j - 1], dp[i - 1][j - 1])) + 1;
             }
         }
 
-        return dp[n][amount];
+
+        return dp[n][m];
     }
+
+
+
+
+
+    /*
+     *  Method for fast input and write
+     * */
+
     static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
         private DataInputStream din;
@@ -67,7 +79,7 @@ public class BookShopFast {
         }
 
         public String readLine() throws IOException {
-            byte[] buf = new byte[64]; // line length
+            byte[] buf = new byte[8192]; // line length
             int cnt = 0, c;
             while ((c = read()) != -1) {
                 if (c == '\n')
@@ -153,6 +165,7 @@ public class BookShopFast {
 
     static Reader sc = new Reader();
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static long mod = (long) (1e9+7);
 
     public static int inputInt() throws IOException {
         return sc.nextInt();
@@ -181,6 +194,5 @@ public class BookShopFast {
     public static void println(String a) throws IOException {
         bw.write(a + "\n");
     }
-
 
 }

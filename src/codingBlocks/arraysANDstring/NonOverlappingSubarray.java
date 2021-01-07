@@ -1,10 +1,10 @@
-package CSES;
+package codingBlocks.arraysANDstring;
 
 import java.io.*;
 import java.lang.*;
 import java.util.*;
 
-public class BookShopFast {
+public class NonOverlappingSubarray {
 
     /*
      *  Main Method : public static void main
@@ -13,41 +13,39 @@ public class BookShopFast {
     public static void main(String args[]) throws IOException {
 
         Reader sc = new Reader();
-        int n = inputInt(), x = inputInt();
-        int[] prices = new int[n], pages = new int[n];
+        PrintWriter w = new PrintWriter(System.out);
 
-        for(int i = 0; i < n; i++)
-            prices[i] = inputInt();
-        for(int i = 0; i < n; i++)
-            pages[i] = inputInt();
-        System.out.println(maximumNumberOfPages(prices,pages,n,x));
-//        println(String.valueOf(maximumNumberOfPages(prices,pages,n,x)));
+        int n = sc.nextInt(), k =sc.nextInt();
+        int[] nums = new int[n];
 
-        bw.flush();
-        bw.close();
-    }
+        for(int i = 0; i < n ; i++)
+            nums[i] = inputInt();
 
-    private static int maximumNumberOfPages(int[] prices, int[] pages, int n, int amount) {
+        int max = Integer.MIN_VALUE, count = 0;
 
-        int[][] dp = new int[n + 1][amount + 1];
-
-        for(int i = 1; i <= n; i++) {
-            for(int j = 1; j <= amount; j++) {
-
-                // Book is not able tp\o be picked so not selecting it.
-                dp[i][j] = dp[i - 1][j];
-
-                if(prices[i - 1] <= j) // book can be able to either picked up or not
-                {
-                    dp[i][j] = Math.max(dp[i - 1][j], pages[i - 1] + dp[i - 1][j - prices[i - 1]]);
-                }
-
-
+        for(int i =0; i < n; i++) {
+            for(int j = i + 1; j < n; j++) {
+//                if(nums[j] == )
             }
         }
 
-        return dp[n][amount];
+
+
+
+
+        bw.flush();
+        bw.close();
+        w.close();
     }
+
+
+
+
+
+    /*
+     *  Method for fast input and write
+     * */
+
     static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
         private DataInputStream din;
@@ -67,7 +65,9 @@ public class BookShopFast {
         }
 
         public String readLine() throws IOException {
-            byte[] buf = new byte[64]; // line length
+            // line length Standard
+            // byte[] buf = new byte[64];
+            byte[] buf = new byte[8192]; // line length extended
             int cnt = 0, c;
             while ((c = read()) != -1) {
                 if (c == '\n')
@@ -153,6 +153,7 @@ public class BookShopFast {
 
     static Reader sc = new Reader();
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    public static long mod = (long) (1e9+7);
 
     public static int inputInt() throws IOException {
         return sc.nextInt();
@@ -181,6 +182,5 @@ public class BookShopFast {
     public static void println(String a) throws IOException {
         bw.write(a + "\n");
     }
-
 
 }

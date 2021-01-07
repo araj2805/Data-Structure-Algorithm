@@ -1,4 +1,5 @@
 package Template;
+
 import java.io.*;
 import java.lang.*;
 import java.util.*;
@@ -12,12 +13,15 @@ public class JavaTemplate {
     public static void main(String args[]) throws IOException {
 
         Reader sc = new Reader();
+        PrintWriter w = new PrintWriter(System.out);
+
         int t = inputInt();
         while (t-- > 0) {
 
         }
         bw.flush();
         bw.close();
+        w.close();
     }
 
 
@@ -47,7 +51,9 @@ public class JavaTemplate {
         }
 
         public String readLine() throws IOException {
-            byte[] buf = new byte[64]; // line length
+            // line length Standard
+            // byte[] buf = new byte[64];
+            byte[] buf = new byte[8192]; // line length extended
             int cnt = 0, c;
             while ((c = read()) != -1) {
                 if (c == '\n')

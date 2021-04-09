@@ -1,10 +1,8 @@
 package binarySearch;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
-
-import java.io.*;
-import java.lang.*;
-import java.util.*;
 
 public class AGGRCOW {
 
@@ -14,7 +12,7 @@ public class AGGRCOW {
 
     public static void main(String args[]) throws IOException {
 
-        Scanner sc= new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
 
         int t = sc.nextInt();
@@ -38,7 +36,7 @@ public class AGGRCOW {
 
         long low = 1, high = nums[n - 1], res = -1;
 
-        if(c > n)
+        if (c > n)
             return res;
 
         high = high - low;
@@ -48,11 +46,10 @@ public class AGGRCOW {
             long mid = low + (high - low) / 2;
 
 
-            if(isValid(nums,c,n,mid) == true) {
-                res = Math.max(res,mid);
+            if (isValid(nums, c, n, mid) == true) {
+                res = Math.max(res, mid);
                 low = mid + 1;
-            }
-            else {
+            } else {
                 high = mid - 1;
             }
         }
@@ -67,17 +64,17 @@ public class AGGRCOW {
 
         long cowFixPosition = nums[0];
 
-        for(int i = 1; i < n; i++) {
+        for (int i = 1; i < n; i++) {
 
-            if(nums[i] - cowFixPosition >= minimumDistance) {
+            if (nums[i] - cowFixPosition >= minimumDistance) {
                 cowFixPosition = nums[i];
                 cow++;
             }
 
-            if(cow == c)
+            if (cow == c)
                 return true;
 
-            if(cow > c)
+            if (cow > c)
                 return false;
         }
 

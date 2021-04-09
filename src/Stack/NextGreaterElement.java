@@ -28,7 +28,7 @@ public class NextGreaterElement {
             stack.push(i);
         }
 
-        for (int i = output.size()-1; i >= 0; i--) {
+        for (int i = output.size() - 1; i >= 0; i--) {
             System.out.print(output.get(i) + " ");
         }
     }

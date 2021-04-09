@@ -2,6 +2,7 @@ package codingBlocks.arraysANDstring;
 
 import java.util.Scanner;
 import java.util.Stack;
+
 /*
 *
 
@@ -31,18 +32,17 @@ public class LongestValidParanthesis {
 
         Stack<Integer> s = new Stack();
         int count = 0, ans = 0;
-        for(int i = 0; i < str.length(); i++) {
-            if(str.charAt(i) == '(') {
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '(') {
                 s.push(count);
                 count = 0;
-            }
-            else if (str.charAt(i) == ')'){
-                if(s.isEmpty())
+            } else if (str.charAt(i) == ')') {
+                if (s.isEmpty())
                     count = 0;
                 else {
                     Integer top = s.pop();
                     count += top + 2;
-                    ans = Math.max(ans,count);
+                    ans = Math.max(ans, count);
                 }
             }
 

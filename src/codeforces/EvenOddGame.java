@@ -10,31 +10,30 @@ public class EvenOddGame {
 
         int t = sc.nextInt();
 
-        while(t-- > 0) {
+        while (t-- > 0) {
             int n = sc.nextInt();
 
-            Integer [] nums = new Integer[n];
+            Integer[] nums = new Integer[n];
 
-            for (int  i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
                 nums[i] = sc.nextInt();
 
             Arrays.sort(nums, Collections.reverseOrder());
 
             long count = 0;
 
-            for(int i = 0; i < n; i++) {
-                if(i % 2 == 0) {
-                    if(nums[i] % 2 == 0) {
+            for (int i = 0; i < n; i++) {
+                if (i % 2 == 0) {
+                    if (nums[i] % 2 == 0) {
                         count += nums[i];
                     }
-                }
-                else {
+                } else {
                     if (nums[i] % 2 != 0)
                         count -= nums[i];
                 }
             }
 
-            if(count == 0)
+            if (count == 0)
                 System.out.println("Tie");
             else if (count > 0)
                 System.out.println("Alice");

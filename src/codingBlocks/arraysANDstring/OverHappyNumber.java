@@ -41,26 +41,26 @@ public class OverHappyNumber {
 
         Set<Integer> set = new HashSet<>();
 
-         return checkNumber(set , n);
+        return checkNumber(set, n);
     }
 
     private static boolean checkNumber(Set<Integer> set, int n) {
 
-        if(n == 1)
+        if (n == 1)
             return true;
 
-        if(set.contains(n))
+        if (set.contains(n))
             return false;
 
         set.add(n);
         n = updatedNumber(n);
-        return checkNumber(set,n);
+        return checkNumber(set, n);
     }
 
     private static int updatedNumber(int n) {
         int newNumber = 0;
 
-        while(n > 0) {
+        while (n > 0) {
             int digit = n % 10;
             newNumber += digit * digit;
             n = n / 10;

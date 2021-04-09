@@ -1,8 +1,6 @@
 package CSES;
 
 import java.io.*;
-import java.lang.*;
-import java.util.*;
 
 public class BookShopFast {
 
@@ -10,17 +8,20 @@ public class BookShopFast {
      *  Main Method : public static void main
      * */
 
+    static Reader sc = new Reader();
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
     public static void main(String args[]) throws IOException {
 
         Reader sc = new Reader();
         int n = inputInt(), x = inputInt();
         int[] prices = new int[n], pages = new int[n];
 
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
             prices[i] = inputInt();
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
             pages[i] = inputInt();
-        System.out.println(maximumNumberOfPages(prices,pages,n,x));
+        System.out.println(maximumNumberOfPages(prices, pages, n, x));
 //        println(String.valueOf(maximumNumberOfPages(prices,pages,n,x)));
 
         bw.flush();
@@ -31,13 +32,13 @@ public class BookShopFast {
 
         int[][] dp = new int[n + 1][amount + 1];
 
-        for(int i = 1; i <= n; i++) {
-            for(int j = 1; j <= amount; j++) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= amount; j++) {
 
                 // Book is not able tp\o be picked so not selecting it.
                 dp[i][j] = dp[i - 1][j];
 
-                if(prices[i - 1] <= j) // book can be able to either picked up or not
+                if (prices[i - 1] <= j) // book can be able to either picked up or not
                 {
                     dp[i][j] = Math.max(dp[i - 1][j], pages[i - 1] + dp[i - 1][j - prices[i - 1]]);
                 }
@@ -48,6 +49,35 @@ public class BookShopFast {
 
         return dp[n][amount];
     }
+
+    public static int inputInt() throws IOException {
+        return sc.nextInt();
+    }
+
+    public static long inputLong() throws IOException {
+        return sc.nextLong();
+    }
+
+    public static double inputDouble() throws IOException {
+        return sc.nextDouble();
+    }
+
+    public static String inputString() throws IOException {
+        return sc.readLine();
+    }
+
+    public static void print(String a) throws IOException {
+        bw.write(a);
+    }
+
+    public static void printSp(String a) throws IOException {
+        bw.write(a + " ");
+    }
+
+    public static void println(String a) throws IOException {
+        bw.write(a + "\n");
+    }
+
     static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
         private DataInputStream din;
@@ -149,37 +179,6 @@ public class BookShopFast {
                 return;
             din.close();
         }
-    }
-
-    static Reader sc = new Reader();
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-    public static int inputInt() throws IOException {
-        return sc.nextInt();
-    }
-
-    public static long inputLong() throws IOException {
-        return sc.nextLong();
-    }
-
-    public static double inputDouble() throws IOException {
-        return sc.nextDouble();
-    }
-
-    public static String inputString() throws IOException {
-        return sc.readLine();
-    }
-
-    public static void print(String a) throws IOException {
-        bw.write(a);
-    }
-
-    public static void printSp(String a) throws IOException {
-        bw.write(a + " ");
-    }
-
-    public static void println(String a) throws IOException {
-        bw.write(a + "\n");
     }
 
 

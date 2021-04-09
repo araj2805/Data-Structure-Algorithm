@@ -1,8 +1,7 @@
 package codechef.dp;
 
-import java.io.*;
-import java.lang.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class CDQU5 {
 
@@ -14,7 +13,7 @@ public class CDQU5 {
 
         Scanner sc = new Scanner(System.in);
 
-        if(sc.hasNextInt()){
+        if (sc.hasNextInt()) {
             int T = sc.nextInt();
             while (T-- > 0) {
 
@@ -38,7 +37,7 @@ public class CDQU5 {
         for (int i = 4; i <= 1000000; i++)
             dp[i] = (dp[i - 2] + dp[i - 3]) % mod;
 
-        return dp[n] % mod ;
+        return dp[n] % mod;
     }
 
 

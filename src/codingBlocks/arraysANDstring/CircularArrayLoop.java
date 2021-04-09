@@ -32,11 +32,11 @@ Sample Output
 public class CircularArrayLoop {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n =sc.nextInt();
+        int n = sc.nextInt();
 
         int[] arr = new int[n];
 
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
             arr[i] = sc.nextInt();
 
         System.out.println(circularArrayLoop(arr) == true ? 1 : 0);
@@ -53,21 +53,20 @@ public class CircularArrayLoop {
 
         for (int i = 0; i < n; i++) {
 
-            if(nums[i] == 0)
+            if (nums[i] == 0)
                 continue;
 
             int slow = i, fast = i;
 
-            while(nums[slow] * nums[next(nums, slow)] > 0 &&
-                    nums[fast] * nums[next(nums,fast)] > 0 &&
-                    nums[fast] * nums[next(nums,next(nums,fast))] > 0) {
+            while (nums[slow] * nums[next(nums, slow)] > 0 &&
+                    nums[fast] * nums[next(nums, fast)] > 0 &&
+                    nums[fast] * nums[next(nums, next(nums, fast))] > 0) {
                 slow = next(nums, slow);
-                fast = next(nums, next(nums,fast));
+                fast = next(nums, next(nums, fast));
 
-                if(slow == fast) {
+                if (slow == fast) {
                     // That means cycle is present, but cycle length should be >1
-                    if(slow == next(nums, slow))
-                    {
+                    if (slow == next(nums, slow)) {
                         break;
                     }
                     return true;
@@ -76,9 +75,9 @@ public class CircularArrayLoop {
 
             slow = i;
             int val = nums[slow];
-            while(val * nums[slow] > 0) {
+            while (val * nums[slow] > 0) {
                 int x = slow;
-                slow = next(nums,slow);
+                slow = next(nums, slow);
 
                 nums[x] = 0;
             }

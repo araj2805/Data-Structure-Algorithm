@@ -1,14 +1,21 @@
 package CSES;
 
 import java.io.*;
-import java.lang.*;
-import java.util.*;
 
 public class EditDistance {
 
     /*
      *  Main Method : public static void main
      * */
+
+    public static long mod = (long) (1e9 + 7);
+    static Reader sc = new Reader();
+
+
+    /*
+     *  Method for fast input and write
+     * */
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
     public static void main(String args[]) throws IOException {
 
@@ -18,7 +25,7 @@ public class EditDistance {
 
         double d = sc.nextDouble();
 
-        System.out.println(solveEditDistance(a,b));
+        System.out.println(solveEditDistance(a, b));
 
         bw.flush();
         bw.close();
@@ -30,17 +37,15 @@ public class EditDistance {
 
         int[][] dp = new int[n + 1][m + 1];
 
-        for(int i = 1; i <= n; i++)
-        {
+        for (int i = 1; i <= n; i++) {
             dp[i][0] = i;
         }
-        for(int i = 1; i <= m; i++)
-        {
+        for (int i = 1; i <= m; i++) {
             dp[0][i] = i;
         }
 
         for (int i = 1; i <= n; i++) {
-            for(int j = 1; j <= m; j++) {
+            for (int j = 1; j <= m; j++) {
                 if (a.charAt(i - 1) == b.charAt(j - 1))
                     dp[i][j] = dp[i - 1][j - 1];
                 else
@@ -52,13 +57,33 @@ public class EditDistance {
         return dp[n][m];
     }
 
+    public static int inputInt() throws IOException {
+        return sc.nextInt();
+    }
 
+    public static long inputLong() throws IOException {
+        return sc.nextLong();
+    }
 
+    public static double inputDouble() throws IOException {
+        return sc.nextDouble();
+    }
 
+    public static String inputString() throws IOException {
+        return sc.readLine();
+    }
 
-    /*
-     *  Method for fast input and write
-     * */
+    public static void print(String a) throws IOException {
+        bw.write(a);
+    }
+
+    public static void printSp(String a) throws IOException {
+        bw.write(a + " ");
+    }
+
+    public static void println(String a) throws IOException {
+        bw.write(a + "\n");
+    }
 
     static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
@@ -161,38 +186,6 @@ public class EditDistance {
                 return;
             din.close();
         }
-    }
-
-    static Reader sc = new Reader();
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    public static long mod = (long) (1e9+7);
-
-    public static int inputInt() throws IOException {
-        return sc.nextInt();
-    }
-
-    public static long inputLong() throws IOException {
-        return sc.nextLong();
-    }
-
-    public static double inputDouble() throws IOException {
-        return sc.nextDouble();
-    }
-
-    public static String inputString() throws IOException {
-        return sc.readLine();
-    }
-
-    public static void print(String a) throws IOException {
-        bw.write(a);
-    }
-
-    public static void printSp(String a) throws IOException {
-        bw.write(a + " ");
-    }
-
-    public static void println(String a) throws IOException {
-        bw.write(a + "\n");
     }
 
 }

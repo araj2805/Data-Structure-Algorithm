@@ -11,22 +11,22 @@ public class LongJumps {
             int n = sc.nextInt();
             int[] nums = new int[n];
 
-            for(int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
                 nums[i] = sc.nextInt();
-            int [] dp = new int [n];
+            int[] dp = new int[n];
 
             int res = 0;
 
             dp[n - 1] = nums[n - 1];
 
-           for(int i = n - 2;i >= 0; i--) {
+            for (int i = n - 2; i >= 0; i--) {
 
-               dp[i] = nums[i] + (nums[i] + i >= n ? 0 : dp[nums[i] + i]);
+                dp[i] = nums[i] + (nums[i] + i >= n ? 0 : dp[nums[i] + i]);
 
-               res = Math.max(res,dp[i]);
+                res = Math.max(res, dp[i]);
             }
 
-            System.out.println(Math.max(res,dp[n - 1]));
+            System.out.println(Math.max(res, dp[n - 1]));
         }
     }
 }

@@ -1,9 +1,9 @@
 package codeforces;
 
 
-import java.io.*;
-import java.util.*;
-import java.lang.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.InputMismatchException;
 
 public class RegularBracketSequence1469A {
 
@@ -12,19 +12,15 @@ public class RegularBracketSequence1469A {
 
 
         int tt = in.nextInt();
-        while(tt-- > 0) {
+        while (tt-- > 0) {
             String s = in.nextLine();
 
-            if(s.length() % 2 != 0)
-            {
+            if (s.length() % 2 != 0) {
                 System.out.println("NO");
 
-            }
-            else if (s.charAt(0) == ')' || s.charAt(s.length() - 1) == '(')
-            {
+            } else if (s.charAt(0) == ')' || s.charAt(s.length() - 1) == '(') {
                 System.out.println("NO");
-            }
-            else
+            } else
                 System.out.println("YES");
         }
 

@@ -1,8 +1,6 @@
 package codingBlocks.arraysANDstring;
 
 import java.io.*;
-import java.lang.*;
-import java.util.*;
 
 public class NonOverlappingSubarray {
 
@@ -10,27 +8,33 @@ public class NonOverlappingSubarray {
      *  Main Method : public static void main
      * */
 
+    public static long mod = (long) (1e9 + 7);
+
+
+    /*
+     *  Method for fast input and write
+     * */
+    static Reader sc = new Reader();
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
     public static void main(String args[]) throws IOException {
 
         Reader sc = new Reader();
         PrintWriter w = new PrintWriter(System.out);
 
-        int n = sc.nextInt(), k =sc.nextInt();
+        int n = sc.nextInt(), k = sc.nextInt();
         int[] nums = new int[n];
 
-        for(int i = 0; i < n ; i++)
+        for (int i = 0; i < n; i++)
             nums[i] = inputInt();
 
         int max = Integer.MIN_VALUE, count = 0;
 
-        for(int i =0; i < n; i++) {
-            for(int j = i + 1; j < n; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
 //                if(nums[j] == )
             }
         }
-
-
-
 
 
         bw.flush();
@@ -38,13 +42,33 @@ public class NonOverlappingSubarray {
         w.close();
     }
 
+    public static int inputInt() throws IOException {
+        return sc.nextInt();
+    }
 
+    public static long inputLong() throws IOException {
+        return sc.nextLong();
+    }
 
+    public static double inputDouble() throws IOException {
+        return sc.nextDouble();
+    }
 
+    public static String inputString() throws IOException {
+        return sc.readLine();
+    }
 
-    /*
-     *  Method for fast input and write
-     * */
+    public static void print(String a) throws IOException {
+        bw.write(a);
+    }
+
+    public static void printSp(String a) throws IOException {
+        bw.write(a + " ");
+    }
+
+    public static void println(String a) throws IOException {
+        bw.write(a + "\n");
+    }
 
     static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
@@ -149,38 +173,6 @@ public class NonOverlappingSubarray {
                 return;
             din.close();
         }
-    }
-
-    static Reader sc = new Reader();
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    public static long mod = (long) (1e9+7);
-
-    public static int inputInt() throws IOException {
-        return sc.nextInt();
-    }
-
-    public static long inputLong() throws IOException {
-        return sc.nextLong();
-    }
-
-    public static double inputDouble() throws IOException {
-        return sc.nextDouble();
-    }
-
-    public static String inputString() throws IOException {
-        return sc.readLine();
-    }
-
-    public static void print(String a) throws IOException {
-        bw.write(a);
-    }
-
-    public static void printSp(String a) throws IOException {
-        bw.write(a + " ");
-    }
-
-    public static void println(String a) throws IOException {
-        bw.write(a + "\n");
     }
 
 }

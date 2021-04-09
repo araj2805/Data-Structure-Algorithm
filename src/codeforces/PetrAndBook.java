@@ -7,7 +7,7 @@ public class PetrAndBook {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-        int[] read = new int [7];
+        int[] read = new int[7];
 
         for (int i = 0; i < 7; i++)
             read[i] = sc.nextInt();
@@ -15,9 +15,9 @@ public class PetrAndBook {
         long sum = 0;
         int index = -1, i = 0;
 
-        while(true) {
+        while (true) {
             sum += read[i % 7];
-            if(sum >= n) {
+            if (sum >= n) {
                 index = (i % 7) + 1;
                 break;
             }

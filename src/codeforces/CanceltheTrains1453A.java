@@ -5,12 +5,11 @@ import java.util.Scanner;
 
 public class CanceltheTrains1453A {
     public static void main(String[] args) {
-        Scanner sc =new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         long tt = sc.nextLong();
 
-        while(tt-- > 0)
-        {
+        while (tt-- > 0) {
             long n = sc.nextLong(), m = sc.nextLong();
             long[] arr1 = new long[(int) n];
             long[] arr2 = new long[(int) m];
@@ -21,13 +20,12 @@ public class CanceltheTrains1453A {
                 arr2[i] = sc.nextLong();
 
             int res = 0;
-            for(int i = 0; i < n; i++)
-            {
+            for (int i = 0; i < n; i++) {
                 long val = arr1[i];
 
-                int index = Arrays.binarySearch(arr2,val);
+                int index = Arrays.binarySearch(arr2, val);
 
-                if (index >= 0 )
+                if (index >= 0)
                     res++;
             }
             System.out.println(res);

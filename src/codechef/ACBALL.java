@@ -10,7 +10,7 @@ public class ACBALL {
 
         int t = Integer.parseInt(br.readLine().trim());
 
-        while(t-- > 0) {
+        while (t-- > 0) {
             String x = br.readLine().trim();
             String y = br.readLine().trim();
 
@@ -18,15 +18,14 @@ public class ACBALL {
 
             int n = x.length();
 
-            for(int i = 0;i < n; i++) {
+            for (int i = 0; i < n; i++) {
 
-                if(x.charAt(i) == y.charAt(i)) {
-                    if(x.charAt(i) == 'W')
+                if (x.charAt(i) == y.charAt(i)) {
+                    if (x.charAt(i) == 'W')
                         z.append("B");
                     else
                         z.append("W");
-                }
-                else {
+                } else {
                     z.append("B");
                 }
             }

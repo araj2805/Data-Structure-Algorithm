@@ -37,11 +37,11 @@ public class SunnyBuilding {
 
         int t = sc.nextInt();
 
-        while(t-- > 0) {
+        while (t-- > 0) {
             int n = sc.nextInt();
-            int[] nums=  new int[n];
+            int[] nums = new int[n];
 
-            for(int i = 0; i < n ; i++)
+            for (int i = 0; i < n; i++)
                 nums[i] = sc.nextInt();
 
             System.out.println(helper(nums, n));
@@ -53,9 +53,9 @@ public class SunnyBuilding {
 
         int ans = 1, maxLeftHeight = nums[0];
 
-        for(int i = 1; i < n; i++) {
+        for (int i = 1; i < n; i++) {
 
-            if(maxLeftHeight <= nums[i])
+            if (maxLeftHeight <= nums[i])
                 ans++;
 
             maxLeftHeight = Math.max(maxLeftHeight, nums[i]);

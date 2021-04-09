@@ -40,33 +40,32 @@ There are 5 ways to assign symbols to make the sum of zeni be target 3.
 public class TargetSum {
 
     public static void main(String[] args) {
-        Scanner sc  =new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt(), target = sc.nextInt(),sum = 0;
+        int n = sc.nextInt(), target = sc.nextInt(), sum = 0;
         int[] nums = new int[n];
 
-        for (int  i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             nums[i] = sc.nextInt();
             sum += nums[i];
         }
 
-        System.out.println(targetSumWays(nums,(target + sum) / 2,n));
+        System.out.println(targetSumWays(nums, (target + sum) / 2, n));
     }
 
     private static int targetSumWays(int[] nums, int target, int n) {
 
         int[][] dp = new int[n + 1][target + 1];
 
-        for(int i  = 0; i <= n; i++)
+        for (int i = 0; i <= n; i++)
             dp[i][0] = 1;
 
-        for(int i = 1; i <= n; i ++) {
+        for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= target; j++) {
-                if(j >= nums[i - 1]) {
-                    dp[i][j] = dp[i - 1][j] + dp[i -  1][j - nums[i - 1]];
-                }
-                else
-                    dp[i][j] = dp[i  - 1][j];
+                if (j >= nums[i - 1]) {
+                    dp[i][j] = dp[i - 1][j] + dp[i - 1][j - nums[i - 1]];
+                } else
+                    dp[i][j] = dp[i - 1][j];
             }
         }
 

@@ -36,27 +36,27 @@ public class UniqueCharacters {
         int n = sc.nextInt();
         String[] arr = new String[n];
 
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
             arr[i] = sc.next();
 
-        System.out.println(uniqueCharacter(arr,n));
+        System.out.println(uniqueCharacter(arr, n));
 
     }
 
     private static int uniqueCharacter(String[] arr, int n) {
-        return helper(arr,0,"");
+        return helper(arr, 0, "");
     }
 
     private static int helper(String[] arr, int i, String s) {
 
-        if(i == arr.length) {
-            if(s.length() > 26)
+        if (i == arr.length) {
+            if (s.length() > 26)
                 return 0;
 
             int[] freq = new int[26];
 
-            for(int k = 0; k < s.length(); k++) {
-                if(freq[s.charAt(k) - 'a'] == 1)
+            for (int k = 0; k < s.length(); k++) {
+                if (freq[s.charAt(k) - 'a'] == 1)
                     return 0;
                 freq[s.charAt(k) - 'a']++;
             }
@@ -68,13 +68,13 @@ public class UniqueCharacters {
 //            int op1 = 0, op2 = 0;
 
         // Including character
-        if(arr[i].length() + s.length() <= 26) {
+        if (arr[i].length() + s.length() <= 26) {
             op1 = helper(arr, i + 1, s + arr[i]);
         }
 
         op2 = helper(arr, i + 1, s);
 
-        return Math.max(op1,op2);
+        return Math.max(op1, op2);
 
     }
 }

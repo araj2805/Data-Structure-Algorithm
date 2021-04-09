@@ -33,11 +33,11 @@ public class HouseRobbery {
 
         int tt = sc.nextInt();
 
-        while(tt-- > 0) {
+        while (tt-- > 0) {
             int n = sc.nextInt();
             int[] nums = new int[n];
 
-            for(int i = 0 ; i < n; i++)
+            for (int i = 0; i < n; i++)
                 nums[i] = sc.nextInt();
 
             System.out.println(solve(nums));
@@ -51,9 +51,8 @@ public class HouseRobbery {
 
         dp[1] = nums[0];
 
-        for (int i = 2; i <= n; i++)
-        {
-            dp[i] = Math.max(dp[i - 1] , dp[i - 2] + nums[i - 1]);
+        for (int i = 2; i <= n; i++) {
+            dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
         }
 
         return dp[n];

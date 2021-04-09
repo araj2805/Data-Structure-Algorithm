@@ -1,36 +1,32 @@
-package Template;
+package unacademy.Recursion;
 
-import java.io.*;
-import java.lang.*;
-import java.util.*;
+// Working program using Reader Class
 
-public class JavaTemplate {
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 
-    /*
-     *  Main Method : public static void main
-     * */
-
-    public static void main(String args[]) throws IOException {
-
+public class Pattern {
+    public static void main(String[] args) throws IOException {
         Reader sc = new Reader();
-        PrintWriter w = new PrintWriter(System.out);
 
-        int t = inputInt();
-        while (t-- > 0) {
+        int n = sc.nextInt();
 
-        }
-        bw.flush();
-        bw.close();
-        w.close();
+        printPattern(n, 0);
     }
 
+    private static void printPattern(int n, int i) {
+        if (n == 0)
+            return;
 
+        printPattern(n - 1, 0);
 
-
-
-    /*
-     *  Method for fast input and write
-     * */
+        if (i < n) {
+            System.out.print("* ");
+            printPattern(n, i + 1);
+        }
+        System.out.println();
+    }
 
     static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
@@ -51,9 +47,7 @@ public class JavaTemplate {
         }
 
         public String readLine() throws IOException {
-            // line length Standard
-            // byte[] buf = new byte[64];
-            byte[] buf = new byte[8192]; // line length extended
+            byte[] buf = new byte[64]; // line length
             int cnt = 0, c;
             while ((c = read()) != -1) {
                 if (c == '\n')
@@ -74,6 +68,7 @@ public class JavaTemplate {
             do {
                 ret = ret * 10 + c - '0';
             } while ((c = read()) >= '0' && c <= '9');
+
             if (neg)
                 return -ret;
             return ret;
@@ -104,15 +99,18 @@ public class JavaTemplate {
             boolean neg = (c == '-');
             if (neg)
                 c = read();
+
             do {
                 ret = ret * 10 + c - '0';
             }
             while ((c = read()) >= '0' && c <= '9');
+
             if (c == '.') {
                 while ((c = read()) >= '0' && c <= '9') {
                     ret += (c - '0') / (div *= 10);
                 }
             }
+
             if (neg)
                 return -ret;
             return ret;
@@ -136,37 +134,4 @@ public class JavaTemplate {
             din.close();
         }
     }
-
-    static Reader sc = new Reader();
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    public static long mod = (long) (1e9+7);
-
-    public static int inputInt() throws IOException {
-        return sc.nextInt();
-    }
-
-    public static long inputLong() throws IOException {
-        return sc.nextLong();
-    }
-
-    public static double inputDouble() throws IOException {
-        return sc.nextDouble();
-    }
-
-    public static String inputString() throws IOException {
-        return sc.readLine();
-    }
-
-    public static void print(String a) throws IOException {
-        bw.write(a);
-    }
-
-    public static void printSp(String a) throws IOException {
-        bw.write(a + " ");
-    }
-
-    public static void println(String a) throws IOException {
-        bw.write(a + "\n");
-    }
-
-}
+} 

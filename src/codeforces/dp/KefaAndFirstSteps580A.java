@@ -14,12 +14,11 @@ public class KefaAndFirstSteps580A {
 
         int count = 1, max = 1;
 
-        for(int i = 1; i < n; i++) {
-            if(nums[i - 1] <= nums[i]) {
+        for (int i = 1; i < n; i++) {
+            if (nums[i - 1] <= nums[i]) {
                 count++;
-                max = Math.max(max,count);
-            }
-            else {
+                max = Math.max(max, count);
+            } else {
                 count = 1;
             }
         }

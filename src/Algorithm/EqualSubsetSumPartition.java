@@ -1,7 +1,5 @@
 package Algorithm;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 public class EqualSubsetSumPartition {
     public static void main(String... args) {
         EqualSubsetSumPartition ps = new EqualSubsetSumPartition();

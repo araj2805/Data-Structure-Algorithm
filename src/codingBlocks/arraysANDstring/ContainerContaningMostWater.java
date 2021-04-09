@@ -34,10 +34,10 @@ public class ContainerContaningMostWater {
         int n = sc.nextInt();
         int[] arr = new int[n];
 
-        for(int i = 0; i < n;i++)
+        for (int i = 0; i < n; i++)
             arr[i] = sc.nextInt();
 
-        System.out.println(maxWater(arr,n));
+        System.out.println(maxWater(arr, n));
     }
 
     private static long maxWater(int[] arr, int n) {
@@ -45,10 +45,10 @@ public class ContainerContaningMostWater {
         int left = 0, right = n - 1;
         long area = Integer.MIN_VALUE;
 
-        while(left < right) {
-            area = Math.max(area, Math.min(arr[left],arr[right]) * (right - left));
+        while (left < right) {
+            area = Math.max(area, Math.min(arr[left], arr[right]) * (right - left));
 
-            if(arr[left] < arr[right])
+            if (arr[left] < arr[right])
                 left++;
             else
                 right--;

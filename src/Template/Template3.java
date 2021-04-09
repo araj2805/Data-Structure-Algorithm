@@ -9,10 +9,23 @@ import java.util.StringTokenizer;
 public class Template3 {
     static class FastReader {
 
+        BufferedReader br;
+        StringTokenizer st;
+
+
+        /*
+         *  I/O Template
+         * */
+
+        public FastReader() throws IOException {
+            br = new BufferedReader(new InputStreamReader(System.in));
+            br.read();
+        }
+
         public static void main(String[] args) throws IOException {
             FastReader sc = new FastReader();
             int tt = sc.nextInt();
-            if(tt-- > 0) {
+            if (tt-- > 0) {
                 int n = sc.nextInt();
                 System.out.println(solve(n));
             }
@@ -32,20 +45,7 @@ public class Template3 {
             for (int i = 4; i <= 1000000; i++)
                 dp[i] = (dp[i - 2] + dp[i - 3]) % mod;
 
-            return dp[n] % mod ;
-        }
-
-
-        /*
-        *  I/O Template
-        * */
-
-        BufferedReader br;
-        StringTokenizer st;
-
-        public FastReader() throws IOException {
-            br = new BufferedReader(new InputStreamReader(System.in));
-            br.read();
+            return dp[n] % mod;
         }
 
         String next() {

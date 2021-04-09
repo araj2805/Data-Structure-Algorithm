@@ -1,42 +1,51 @@
 package Template;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 class Solution {
-    public static void main(String[] args) {
+    public int shortestPathBinaryMatrix(List<List<Integer>> grid) {
 
-        int[] nums = {1,3,5,7,9};
+        if (grid == null || grid.size() == 0)
+            return -1;
 
-        System.out.println(countPairs(nums));
+        int n = grid.size(), m = grid.get(0).size();
 
-    }
-    public static int countPairs(int[] nums) {
+        if (grid.get(0).get(0) == 1)
+            return -1;
 
-        long count = 0, mod = (long)1e9+7;
+        boolean[][] visited = new boolean[n][m];
 
-        Map<Integer, Integer> map = new HashMap<>();
+        int[][] dir = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, -1}, {-1, 1}, {-1, -1}, {1, 1}};
 
-        for (int i = 0; i < nums.length; i++) {
-            int element = nums[i]; // X + Y = 2^z so here X is element
+        Queue<int[]> q = new LinkedList<>();
 
-            // calculating and finding 2^z - X
-            for (int j = 0; j < 32; j++) {
+        q.add(new int[]{0, 0});
 
-                long temp = (long)Math.pow(2,j); // 2^z
+        visited[0][0] = true;
 
-                // 2^z - x
-                if(map.containsKey(temp - element)) {
-                    count += map.get(temp - element);
+        int ans = 0;
+        while (q.isEmpty() == false) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                int[] corrd = q.poll();
+
+                if (grid.get(corrd[0]).get(corrd[1]) == 9)
+                    return ans + 1;
+
+                for (int k = 0; k < 8; k++) {
+                    int nextX = dir[k][0] + corrd[0];
+                    int nextY = dir[k][1] + corrd[1];
+
+                    if (nextX >= 0 && nextX < n && nextY >= 0 && nextY < m && visited[nextX][nextY] == false && grid.get(nextX).get(nextY) == 0) {
+                        q.add(new int[]{nextX, nextY});
+                        visited[nextX][nextY] = true;
+                    }
                 }
             }
-
-            map.put(element, map.getOrDefault(element,0) + 1);
+            ans++;
         }
-
-        return (int)count;
+        return -1;
     }
-
-
 }

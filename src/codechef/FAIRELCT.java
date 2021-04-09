@@ -7,23 +7,22 @@ public class FAIRELCT {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        if(sc.hasNextInt()) {
+        if (sc.hasNextInt()) {
             int tt = sc.nextInt();
 
-           outer : while(tt-- > 0) {
+            outer:
+            while (tt-- > 0) {
                 int n = sc.nextInt(), m = sc.nextInt();
 
                 long[] a = new long[n], b = new long[m];
                 long john = 0, jack = 0;
 
-                for(int i = 0; i <n; i++)
-                {
+                for (int i = 0; i < n; i++) {
                     a[i] = sc.nextLong();
                     john += a[i];
                 }
 
-                for (int i = 0; i < m; i++)
-                {
+                for (int i = 0; i < m; i++) {
                     b[i] = sc.nextLong();
                     jack += b[i];
                 }
@@ -36,21 +35,19 @@ public class FAIRELCT {
                 Arrays.sort(a);
                 Arrays.sort(b);
 
-                int  i = 0, j = m - 1;
+                int i = 0, j = m - 1;
                 long count = 0;
 
 
-
-
-                while(i < n && j >= 0 && john <= jack) {
+                while (i < n && j >= 0 && john <= jack) {
                     long johnEle = a[i], jackEle = b[j];
 
-                    if(johnEle >= jackEle) {
+                    if (johnEle >= jackEle) {
                         System.out.println(-1);
                         continue outer;
                     }
 
-                    if(johnEle < jackEle) {
+                    if (johnEle < jackEle) {
 
                         count++;
 
@@ -58,13 +55,12 @@ public class FAIRELCT {
                         a[i] = b[j];
                         b[j] = temp;
 
-                        john = (john +jackEle - johnEle);
+                        john = (john + jackEle - johnEle);
                         jack = (jack + johnEle - jackEle);
 
                         i++;
                         j--;
-                    }
-                    else {
+                    } else {
                         System.out.println(-1);
                         continue outer;
                     }

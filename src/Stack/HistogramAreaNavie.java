@@ -2,16 +2,16 @@ package Stack;
 
 
 /*
-* This is naive solution whose time complexity is o(n^2)
-*
-* Algorithm:
-*
-* 1) Consider each element as smallest rectangular bar and create area around it.
-* 2) Area can be calculated by moving left from the element and check while element is greater or equal and then add to area else break
-* 3) Area can be calculated by movinf right from the element and check while element is greater or equal and then add to area else break
-* 4) get the maximum of calculated area and previous area and then return maximum area
-*
-* */
+ * This is naive solution whose time complexity is o(n^2)
+ *
+ * Algorithm:
+ *
+ * 1) Consider each element as smallest rectangular bar and create area around it.
+ * 2) Area can be calculated by moving left from the element and check while element is greater or equal and then add to area else break
+ * 3) Area can be calculated by movinf right from the element and check while element is greater or equal and then add to area else break
+ * 4) get the maximum of calculated area and previous area and then return maximum area
+ *
+ * */
 
 public class HistogramAreaNavie {
 

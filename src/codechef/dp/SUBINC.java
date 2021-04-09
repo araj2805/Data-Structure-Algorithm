@@ -9,9 +9,9 @@ public class SUBINC {
         if (sc.hasNextInt()) {
             int tt = sc.nextInt();
 
-            while(tt-- > 0) {
+            while (tt-- > 0) {
                 int n = sc.nextInt();
-                int [] nums = new int[n];
+                int[] nums = new int[n];
 
                 for (int i = 0; i < n; i++) {
                     nums[i] = sc.nextInt();
@@ -22,10 +22,9 @@ public class SUBINC {
                 dp[0] = 1;
 
                 for (int i = 1; i < n; i++) {
-                    if(nums[i - 1] <= nums[i]) {
+                    if (nums[i - 1] <= nums[i]) {
                         dp[i] = dp[i - 1] + 1;
-                    }
-                    else
+                    } else
                         dp[i] = 1;
 
                     count += dp[i];

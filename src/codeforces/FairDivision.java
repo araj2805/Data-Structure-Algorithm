@@ -1,13 +1,11 @@
 package codeforces;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class FairDivision {
     public static void main(String[] args) {
-        Scanner sc  =new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         int T = sc.nextInt();
 
@@ -20,18 +18,17 @@ public class FairDivision {
                 a[i] = sc.nextInt();
             Arrays.sort(a);
 
-            for (int i =  n - 1; i >= 0; i--){
+            for (int i = n - 1; i >= 0; i--) {
                 int ele = a[i];
-                if(alice > bob) {
+                if (alice > bob) {
                     bob += ele;
-                }
-                else {
+                } else {
                     alice += ele;
                 }
             }
 
 
-            if(alice == bob)
+            if (alice == bob)
                 System.out.println("YES");
             else
                 System.out.println("NO");

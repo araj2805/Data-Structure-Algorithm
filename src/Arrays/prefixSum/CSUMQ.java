@@ -7,11 +7,11 @@ public class CSUMQ {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-        int[] nums = new int[n],  prefix = new int[n];
+        int[] nums = new int[n], prefix = new int[n];
 
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             nums[i] = sc.nextInt();
-            if(i == 0)
+            if (i == 0)
                 prefix[i] = nums[i];
             else
                 prefix[i] = prefix[i - 1] + nums[i];
@@ -19,7 +19,7 @@ public class CSUMQ {
 
         int q = sc.nextInt();
 
-        while(q-- > 0) {
+        while (q-- > 0) {
             int i = sc.nextInt(), j = sc.nextInt();
 
             if (i == 0)

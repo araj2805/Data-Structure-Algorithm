@@ -40,7 +40,7 @@ public class BuyAndSellStocks3 {
 
         int[] nums = new int[n];
 
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
             nums[i] = sc.nextInt();
 
         System.out.println(maxProfit(nums));
@@ -50,10 +50,10 @@ public class BuyAndSellStocks3 {
 
         int[][] profits = new int[3][prices.length];
 
-        for(int t = 1; t < 3; t++) {
+        for (int t = 1; t < 3; t++) {
             int max = Integer.MIN_VALUE;
 
-            for(int d = 1; d < prices.length; d++) {
+            for (int d = 1; d < prices.length; d++) {
                 max = Math.max(max, profits[t - 1][d - 1] - prices[d - 1]);
 
                 profits[t][d] = Math.max(profits[t][d - 1], max + prices[d]);

@@ -20,10 +20,10 @@ public class DiceCombinations {
         // Base Case
         dp[0] = dp[1] = 1;
 
-        for(int i = 2; i <= n; i++) { // Filling Dp States
-            for(int k = 1; k <= 6; k++) { // Throwing Dice Value
-                if(k > i) continue;
-                dp[i] = (dp[i]% 1000000007 + dp[i - k]% 1000000007)% 1000000007;
+        for (int i = 2; i <= n; i++) { // Filling Dp States
+            for (int k = 1; k <= 6; k++) { // Throwing Dice Value
+                if (k > i) continue;
+                dp[i] = (dp[i] % 1000000007 + dp[i - k] % 1000000007) % 1000000007;
             }
         }
 
@@ -34,6 +34,6 @@ public class DiceCombinations {
             System.out.println();
         }*/
 
-        return (dp[n] ) % 1000000007;
+        return (dp[n]) % 1000000007;
     }
 }

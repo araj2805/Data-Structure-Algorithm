@@ -17,8 +17,8 @@ public class KJandstreetlightslocked {
             int l = x - range < 0 ? 0 : x - range;
             int r = x + range > p ? p : x + range;
 
-            for(int i = l; i <= r; i++) {
-                if(nums[i] == 1)
+            for (int i = l; i <= r; i++) {
+                if (nums[i] == 1)
                     nums[i] = 0;
                 else
                     nums[i] = 1;
@@ -31,16 +31,15 @@ public class KJandstreetlightslocked {
 
         System.out.println();
 
-        int count = 0,res = Integer.MIN_VALUE;
+        int count = 0, res = Integer.MIN_VALUE;
 
-        for(int  i = 0; i <= p; i++) {
-            if(nums[i] == 0) {
+        for (int i = 0; i <= p; i++) {
+            if (nums[i] == 0) {
                 count++;
 
-            }
-            else
+            } else
                 count = 0;
-            res = Math.max(res,count);
+            res = Math.max(res, count);
         }
 
         System.out.println(res);

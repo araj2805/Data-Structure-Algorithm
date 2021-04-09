@@ -1,14 +1,21 @@
 package CSES;
 
 import java.io.*;
-import java.lang.*;
-import java.util.*;
 
 public class Exponentiation {
 
     /*
      *  Main Method : public static void main
      * */
+
+    public static long mod = (long) (1e9 + 7);
+    static Reader sc = new Reader();
+
+
+    /*
+     *  Method for fast input and write
+     * */
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
     public static void main(String args[]) throws IOException {
 
@@ -20,7 +27,7 @@ public class Exponentiation {
 
             long x = sc.nextLong(), n = sc.nextLong();
 
-            System.out.println(solveExp(x,n));
+            System.out.println(solveExp(x, n));
 
 
         }
@@ -31,28 +38,47 @@ public class Exponentiation {
 
     private static long solveExp(long x, long n) {
 
-        if(n == 0)
+        if (n == 0)
             return 1;
 
-        else if(n % 2 == 0) {
+        else if (n % 2 == 0) {
             n = n / 2;
-            return solveExp((x * x ) % mod,n);
-        }
-        else {
+            return solveExp((x * x) % mod, n);
+        } else {
             n = n - 1;
             n = n / 2;
-            return x  * solveExp((x  * x ) % mod,n) % mod;
+            return x * solveExp((x * x) % mod, n) % mod;
         }
 
     }
 
+    public static int inputInt() throws IOException {
+        return sc.nextInt();
+    }
 
+    public static long inputLong() throws IOException {
+        return sc.nextLong();
+    }
 
+    public static double inputDouble() throws IOException {
+        return sc.nextDouble();
+    }
 
+    public static String inputString() throws IOException {
+        return sc.readLine();
+    }
 
-    /*
-     *  Method for fast input and write
-     * */
+    public static void print(String a) throws IOException {
+        bw.write(a);
+    }
+
+    public static void printSp(String a) throws IOException {
+        bw.write(a + " ");
+    }
+
+    public static void println(String a) throws IOException {
+        bw.write(a + "\n");
+    }
 
     static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
@@ -157,38 +183,6 @@ public class Exponentiation {
                 return;
             din.close();
         }
-    }
-
-    static Reader sc = new Reader();
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    public static long mod = (long) (1e9+7);
-
-    public static int inputInt() throws IOException {
-        return sc.nextInt();
-    }
-
-    public static long inputLong() throws IOException {
-        return sc.nextLong();
-    }
-
-    public static double inputDouble() throws IOException {
-        return sc.nextDouble();
-    }
-
-    public static String inputString() throws IOException {
-        return sc.readLine();
-    }
-
-    public static void print(String a) throws IOException {
-        bw.write(a);
-    }
-
-    public static void printSp(String a) throws IOException {
-        bw.write(a + " ");
-    }
-
-    public static void println(String a) throws IOException {
-        bw.write(a + "\n");
     }
 
 }

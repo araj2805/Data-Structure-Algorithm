@@ -1,6 +1,9 @@
 package codingBlocks.arraysANDstring;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Scanner;
 
 
 /*
@@ -40,9 +43,9 @@ public class PartyHallsPriorityQueue {
         List<List<Integer>> intervals = new ArrayList<>();
 
 
-        for(int i = 0 ;i < n; i++) {
+        for (int i = 0; i < n; i++) {
             List<Integer> temp = new ArrayList<>();
-            for(int j = 0; j < 2; j++) {
+            for (int j = 0; j < 2; j++) {
                 temp.add(sc.nextInt());
             }
             intervals.add(temp);
@@ -59,19 +62,15 @@ public class PartyHallsPriorityQueue {
 
         PriorityQueue<Integer> pq = new PriorityQueue();
 
-        for(List<Integer> list : intervals) {
-            if(pq.isEmpty()) {
+        for (List<Integer> list : intervals) {
+            if (pq.isEmpty()) {
                 partyHalls++;
                 pq.add(list.get(1));
-            }
-            else {
-                if(pq.peek() <= list.get(0))
-                {
+            } else {
+                if (pq.peek() <= list.get(0)) {
                     pq.poll();
                     pq.add(list.get(1));
-                }
-                else
-                {
+                } else {
                     partyHalls++;
                     pq.add(list.get(1));
                 }

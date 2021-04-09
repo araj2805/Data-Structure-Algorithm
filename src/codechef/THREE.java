@@ -8,10 +8,10 @@ public class THREE {
     public static void main(String[] args) throws java.lang.Exception {
         Scanner sc = new Scanner(System.in);
 
-        if(sc.hasNextInt()) {
+        if (sc.hasNextInt()) {
             int tt = sc.nextInt();
 
-            while(tt-- > 0) {
+            while (tt-- > 0) {
                 String str = sc.next();
 
                 System.out.println(solve(str));
@@ -24,8 +24,8 @@ public class THREE {
         Map<Character, Integer> map = new HashMap<>();
 
 //        Making frequency of each character
-        for(char ch : str.toCharArray()) {
-            map.put(ch, map.getOrDefault(ch,0) + 1);
+        for (char ch : str.toCharArray()) {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
 
         int ans = 0;

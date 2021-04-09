@@ -34,21 +34,21 @@ public class ClimbingStaircase {
 
         int[] dp = new int[n + 1];
 
-        System.out.println(solve(n,dp));
+        System.out.println(solve(n, dp));
     }
 
     private static int solve(int n, int[] dp) {
 
 //        Base Case
-        if(n <= 1)
+        if (n <= 1)
             return n;
         if (n == 2)
             return n;
 
-        if(dp[n] != 0)
+        if (dp[n] != 0)
             return dp[n];
 
-        dp[n] = solve(n - 1,dp) + solve(n - 2,dp);
+        dp[n] = solve(n - 1, dp) + solve(n - 2, dp);
 
         return dp[n];
     }

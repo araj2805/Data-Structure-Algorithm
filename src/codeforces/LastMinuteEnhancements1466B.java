@@ -10,23 +10,22 @@ public class LastMinuteEnhancements1466B {
 
         int tt = sc.nextInt();
 
-        while(tt-- > 0) {
+        while (tt-- > 0) {
             int n = sc.nextInt();
             int[] nums = new int[n];
 
-            Map<Integer,Integer> map = new HashMap<>();
+            Map<Integer, Integer> map = new HashMap<>();
 
-            for(int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {
                 nums[i] = sc.nextInt();
-                map.put(nums[i],map.getOrDefault(nums[i],0) + 1);
+                map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
             }
 
-            for(int i : nums) {
+            for (int i : nums) {
                 int freq = map.get(i);
 
-                if(freq > 1 && map.getOrDefault(i + 1,0) >= 0)
-                {
-                    map.put(i,freq - 1);
+                if (freq > 1 && map.getOrDefault(i + 1, 0) >= 0) {
+                    map.put(i, freq - 1);
                     map.put(i + 1, map.getOrDefault(i + 1, 0) + 1);
                 }
             }

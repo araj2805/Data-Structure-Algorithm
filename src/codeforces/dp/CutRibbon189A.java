@@ -9,11 +9,13 @@ public class CutRibbon189A {
 
         int[] nums = new int[3];
         int n = sc.nextInt(), ans = 0;
-        nums[0] = sc.nextInt(); nums[1] = sc.nextInt(); nums[2] = sc.nextInt();
+        nums[0] = sc.nextInt();
+        nums[1] = sc.nextInt();
+        nums[2] = sc.nextInt();
 
         Arrays.sort(nums);
 
-        while(n !=   0) {
+        while (n != 0) {
 
         }
 

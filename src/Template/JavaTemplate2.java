@@ -1,14 +1,15 @@
 package Template;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.InputMismatchException;
 
-public class JavaTemplate2{
+public class JavaTemplate2 {
 
     public static void main(String[] args) {
         InputReader in = new InputReader(System.in);
         PrintWriter w = new PrintWriter(System.out);
-
 
 
         w.close();

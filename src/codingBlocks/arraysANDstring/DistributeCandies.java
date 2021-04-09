@@ -33,7 +33,7 @@ public class DistributeCandies {
         int n = sc.nextInt();
         int[] nums = new int[n];
 
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
             nums[i] = sc.nextInt();
 
         System.out.println(helper(nums));
@@ -41,23 +41,23 @@ public class DistributeCandies {
 
     private static int helper(int[] nums) {
 
-        Map<Integer,Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
         int n = nums.length;
         int limit = n / 2;
 
-        for(int i : nums) {
-            map.put(i,map.getOrDefault(i,0) + 1);
+        for (int i : nums) {
+            map.put(i, map.getOrDefault(i, 0) + 1);
         }
 
         int ans = 0;
 
-        for(Integer key : map.keySet()) {
+        for (Integer key : map.keySet()) {
 
             if (ans == limit)
                 break;
 
-            if(map.get(key) > 0)
+            if (map.get(key) > 0)
                 ans++;
         }
 

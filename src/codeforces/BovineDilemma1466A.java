@@ -16,19 +16,19 @@ public class BovineDilemma1466A {
 
             Set<Double> set = new HashSet<>();
 
-            for(int i = 0;i < n; i++)
+            for (int i = 0; i < n; i++)
                 nums[i] = sc.nextInt();
 
             double areaM = (0.5) * (nums[0]);
 
 
-            for(int  i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {
                 double areaMaster = (0.5) * (nums[i]);
 
-                for(int j = i + 1; j < n; j++) {
+                for (int j = i + 1; j < n; j++) {
                     double area = (0.5) * nums[j];
                     double areaFinal = area - areaMaster;
-                    if(areaFinal > 0)
+                    if (areaFinal > 0)
                         set.add(areaFinal);
                 }
 

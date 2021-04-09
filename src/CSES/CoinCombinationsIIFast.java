@@ -1,10 +1,87 @@
 package CSES;
 
 import java.io.*;
-import java.lang.*;
-import java.util.*;
 
 public class CoinCombinationsIIFast {
+    public static long mod = (long) (1e9 + 7);
+    static Reader sc = new Reader();
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+    public static int inputInt() throws IOException {
+        return sc.nextInt();
+    }
+
+    public static long inputLong() throws IOException {
+        return sc.nextLong();
+    }
+
+    public static double inputDouble() throws IOException {
+        return sc.nextDouble();
+    }
+
+    public static String inputString() throws IOException {
+        return sc.readLine();
+    }
+
+    public static void print(String a) throws IOException {
+        bw.write(a);
+    }
+
+    public static void printSp(String a) throws IOException {
+        bw.write(a + " ");
+    }
+
+    public static void println(String a) throws IOException {
+        bw.write(a + "\n");
+    }
+
+    public static void main(String args[]) throws IOException {
+
+        Reader sc = new Reader();
+
+        Long n = inputLong(), x = inputLong();
+
+        long[] coins = new long[Math.toIntExact(n)];
+
+        for (int i = 0; i < n; i++)
+            coins[i] = inputLong();
+
+        println(String.valueOf(noOfWays(coins, n, x)));
+
+        bw.flush();
+        bw.close();
+    }
+
+    /*
+     *  Main Method : public static void main
+     * */
+
+    private static long noOfWays(long[] coins, long n, long sum) {
+
+        long[][] dp = new long[(int) n + 1][(int) sum + 1];
+
+
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = 1;
+        }
+
+        for (long i = 1; i <= n; i++) {
+            for (long j = 1; j <= sum; j++) {
+
+                dp[(int) i][(int) j] = dp[(int) (i - 1)][(int) j] % mod;
+
+                if (coins[(int) (i - 1)] <= j) {
+                    dp[(int) i][(int) j] = (dp[(int) i][(int) (j - coins[(int) (i - 1)])] % mod + dp[(int) (i - 1)][(int) j] % mod) % mod;
+                }
+
+
+            }
+        }
+
+
+        return dp[(int) n][(int) sum] % mod;
+    }
+
     static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
         private DataInputStream din;
@@ -106,85 +183,5 @@ public class CoinCombinationsIIFast {
                 return;
             din.close();
         }
-    }
-
-    static Reader sc = new Reader();
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    public static long mod = (long) (1e9+7);
-
-    public static int inputInt() throws IOException {
-        return sc.nextInt();
-    }
-
-    public static long inputLong() throws IOException {
-        return sc.nextLong();
-    }
-
-    public static double inputDouble() throws IOException {
-        return sc.nextDouble();
-    }
-
-    public static String inputString() throws IOException {
-        return sc.readLine();
-    }
-
-    public static void print(String a) throws IOException {
-        bw.write(a);
-    }
-
-    public static void printSp(String a) throws IOException {
-        bw.write(a + " ");
-    }
-
-    public static void println(String a) throws IOException {
-        bw.write(a + "\n");
-    }
-
-    /*
-     *  Main Method : public static void main
-     * */
-
-    public static void main(String args[]) throws IOException {
-
-        Reader sc = new Reader();
-
-        Long n = inputLong(), x = inputLong();
-
-        long[] coins = new long[Math.toIntExact(n)];
-
-        for(int i = 0; i < n; i++)
-            coins[i] = inputLong();
-
-        println(String.valueOf(noOfWays(coins, n, x)));
-
-        bw.flush();
-        bw.close();
-    }
-
-    private static long noOfWays(long[] coins, long n, long sum) {
-
-        long[][] dp  = new long[(int)n + 1][(int)sum + 1];
-
-
-        for(int i = 0; i <= n ; i++)
-        {
-            dp[i][0] = 1;
-        }
-
-        for(long i = 1 ; i <= n; i++) {
-            for(long j = 1; j <= sum ; j++) {
-
-                dp[(int) i][(int) j] = dp[(int) (i - 1)][(int) j] % mod;
-
-                if(coins[(int) (i - 1)] <= j) {
-                    dp[(int) i][(int) j] = (dp[(int) i][(int) (j - coins[(int) (i - 1)])] % mod  + dp[(int) (i - 1)][(int) j] % mod )% mod;
-                }
-
-
-            }
-        }
-
-
-        return dp[(int)n][(int)sum] % mod;
     }
 }

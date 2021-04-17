@@ -78,7 +78,7 @@ public class RightSideView {
 
                 Node curr = q.poll();
 
-                if (i == count - 1)  // Condition of printing first element from left view side.
+                if (i == count - 1)  // Condition of printing first element from Right view side.
                     System.out.print(curr.data + " ");
                 if (curr.left != null)
                     q.add(curr.left);

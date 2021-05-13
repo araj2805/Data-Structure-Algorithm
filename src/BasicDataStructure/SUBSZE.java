@@ -3,7 +3,7 @@ package BasicDataStructure;
 import java.io.*;
 import java.util.*;
 
-public class SubarraySumCountSUBSUMK {
+public class SUBSZE {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -18,33 +18,28 @@ public class SubarraySumCountSUBSUMK {
         int t = sc.nextInt();
 
         while (t-- > 0) {
-            long n = sc.nextLong(), k = sc.nextLong();
-
-            long[] nums = new long[(int) n];
+            int n = sc.nextInt();
+            int[] nums = new int[n];
 
             for (int i = 0; i < n; i++)
                 nums[i] = sc.nextInt();
 
-            Map<Long, Long> freq = new HashMap<>();
+            Map<Long, Long> map = new HashMap<>();
 
-            long sum = 0, count = 0;
+            map.put(0l, -1l);
+            Long sum = Long.valueOf(0), max = Long.valueOf(0);
 
-
-            freq.put(0l, 1l);
-
-            for (int i = 0; i < nums.length; i++) {
+            for (int i = 0; i < n; i++) {
                 sum += nums[i];
 
-                if (freq.containsKey(sum - k) == true) {
-                    count += freq.get(sum - k);
-                }
-                freq.put(sum, freq.getOrDefault(sum, 0l) + 1);
+                if (map.containsKey(sum) == true) {
+                    max = Math.max(max, i - map.get(sum));
+                } else
+                    map.put(sum, Long.valueOf(i));
             }
 
-            pw.println(count);
-
+            pw.println(max);
         }
-
 
     }
 

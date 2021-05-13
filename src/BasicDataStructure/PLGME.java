@@ -3,7 +3,7 @@ package BasicDataStructure;
 import java.io.*;
 import java.util.*;
 
-public class SubarraySumCountSUBSUMK {
+public class PLGME {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -18,33 +18,18 @@ public class SubarraySumCountSUBSUMK {
         int t = sc.nextInt();
 
         while (t-- > 0) {
-            long n = sc.nextLong(), k = sc.nextLong();
+            int n = sc.nextInt(), x = sc.nextInt(), y = sc.nextInt();
 
-            long[] nums = new long[(int) n];
+            Deque<Integer> alice = new LinkedList<>();
+            Deque<Integer> bob = new LinkedList<>();
 
-            for (int i = 0; i < n; i++)
-                nums[i] = sc.nextInt();
+            for (int i = 0; i < x; i++)
+                alice.add(sc.nextInt());
+            for (int i = 0; i < y; i++)
+                bob.add(sc.nextInt());
 
-            Map<Long, Long> freq = new HashMap<>();
-
-            long sum = 0, count = 0;
-
-
-            freq.put(0l, 1l);
-
-            for (int i = 0; i < nums.length; i++) {
-                sum += nums[i];
-
-                if (freq.containsKey(sum - k) == true) {
-                    count += freq.get(sum - k);
-                }
-                freq.put(sum, freq.getOrDefault(sum, 0l) + 1);
-            }
-
-            pw.println(count);
 
         }
-
 
     }
 

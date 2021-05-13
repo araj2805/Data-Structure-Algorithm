@@ -1,9 +1,11 @@
-package BasicDataStructure;
+package codechef.contest;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
 
-public class SubarraySumCountSUBSUMK {
+public class SLOOP {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -18,33 +20,9 @@ public class SubarraySumCountSUBSUMK {
         int t = sc.nextInt();
 
         while (t-- > 0) {
-            long n = sc.nextLong(), k = sc.nextLong();
-
-            long[] nums = new long[(int) n];
-
-            for (int i = 0; i < n; i++)
-                nums[i] = sc.nextInt();
-
-            Map<Long, Long> freq = new HashMap<>();
-
-            long sum = 0, count = 0;
-
-
-            freq.put(0l, 1l);
-
-            for (int i = 0; i < nums.length; i++) {
-                sum += nums[i];
-
-                if (freq.containsKey(sum - k) == true) {
-                    count += freq.get(sum - k);
-                }
-                freq.put(sum, freq.getOrDefault(sum, 0l) + 1);
-            }
-
-            pw.println(count);
-
+            int m = sc.nextInt(), s = sc.nextInt();
+            pw.println(m / s);
         }
-
 
     }
 

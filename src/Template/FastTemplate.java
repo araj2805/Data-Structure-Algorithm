@@ -17,6 +17,11 @@ public class FastTemplate {
 
     public static void solve(InputReader sc, PrintWriter pw) {
 
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+
+        }
 
     }
 

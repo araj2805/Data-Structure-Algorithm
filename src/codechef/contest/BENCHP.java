@@ -1,9 +1,9 @@
-package BasicDataStructure;
+package codechef.contest;
 
 import java.io.*;
 import java.util.*;
 
-public class SubarraySumCountSUBSUMK {
+public class BENCHP {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -18,33 +18,39 @@ public class SubarraySumCountSUBSUMK {
         int t = sc.nextInt();
 
         while (t-- > 0) {
-            long n = sc.nextLong(), k = sc.nextLong();
 
-            long[] nums = new long[(int) n];
+            long n = sc.nextLong(), target = sc.nextLong(), rod = sc.nextLong();
+            long[] weights = new long[(int) n];
 
-            for (int i = 0; i < n; i++)
-                nums[i] = sc.nextInt();
+            Map<Long, Long> map = new HashMap<>();
 
-            Map<Long, Long> freq = new HashMap<>();
-
-            long sum = 0, count = 0;
-
-
-            freq.put(0l, 1l);
-
-            for (int i = 0; i < nums.length; i++) {
-                sum += nums[i];
-
-                if (freq.containsKey(sum - k) == true) {
-                    count += freq.get(sum - k);
-                }
-                freq.put(sum, freq.getOrDefault(sum, 0l) + 1);
+            for (int i = 0; i < n; i++) {
+                weights[i] = sc.nextLong();
+                map.put(weights[i], map.getOrDefault(weights[i], 0l) + 1);
             }
 
-            pw.println(count);
+            long score = rod;
+            int i = 0;
+
+            for (Long key : map.keySet()) {
+                long freq = map.get(key);
+
+                if (freq % 2 == 0)
+                    score += freq * key;
+                else
+                    score += (freq - 1) * key;
+
+                if (score >= target)
+                    break;
+            }
+
+
+            if (score >= target)
+                pw.println("YES");
+            else
+                pw.println("NO");
 
         }
-
 
     }
 

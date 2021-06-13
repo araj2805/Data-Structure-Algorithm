@@ -1,11 +1,13 @@
-package Template;
+package unacademy.dp;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class FastTemplate {
+public class KFibonnaci {
+    final static long mod = (long) (1e9 + 7);
+
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -17,13 +19,37 @@ public class FastTemplate {
 
     public static void solve(InputReader sc, PrintWriter pw) {
 
-        int t = sc.nextInt();
+        int n = sc.nextInt(), k = sc.nextInt();
 
-        while (t-- > 0) {
+        pw.println(kFib(n, k));
+
+    }
+
+    private static int kFib(int n, int k) {
+
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+
+        long ans = 0;
+
+        if (n <= k)
+            return 1;
+        else {
+
+            for (int i = k; i >= 1; i--) {
+                ans += dp[n - k];
+            }
 
         }
 
+        return (int) (ans % mod);
     }
+
 
     static String reverse(String s) {
         return (new StringBuilder(s)).reverse().toString();

@@ -1,11 +1,11 @@
-package Template;
+package gameTheory;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class FastTemplate {
+public class NUMGAME {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -21,17 +21,20 @@ public class FastTemplate {
 
         while (t-- > 0) {
 
+            long n = sc.nextLong();
+
+
+            if (n % 2 == 0)
+                pw.println("ALICE");
+            else
+                pw.println("BOB");
+
         }
 
     }
 
     static String reverse(String s) {
         return (new StringBuilder(s)).reverse().toString();
-    }
-
-    static void inputArray(int[] nums, int n, InputReader sc) {
-        for (int i = 0; i < n; i++)
-            nums[i] = sc.nextInt();
     }
 
     static void sieveOfEratosthenes(int n, int factors[]) {

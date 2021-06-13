@@ -1,11 +1,11 @@
-package Template;
+package codechef.contest;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class FastTemplate {
+public class HOOPS {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -21,6 +21,9 @@ public class FastTemplate {
 
         while (t-- > 0) {
 
+            int n = sc.nextInt();
+
+            pw.println((n / 2) + 1);
         }
 
     }

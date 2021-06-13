@@ -1,11 +1,14 @@
-package Template;
+package unacademy.dp;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class FastTemplate {
+public class FibonacciNumbers {
+
+    static final long mod = (long) (1e9 + 7);
+
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -17,9 +20,20 @@ public class FastTemplate {
 
     public static void solve(InputReader sc, PrintWriter pw) {
 
+        int[] dp = new int[(int) 1e8];
+
+        dp[0] = 0;
+        dp[1] = 1;
+
+        for (int i = 2; i < 1e8; i++)
+            dp[i] = (int) ((dp[i - 1] + dp[i - 2]) % mod);
+
         int t = sc.nextInt();
 
         while (t-- > 0) {
+            int n = sc.nextInt();
+
+            pw.println(dp[n]);
 
         }
 

@@ -1,11 +1,11 @@
-package Template;
+package codechef.contest;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class FastTemplate {
+public class MARARUN {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -21,6 +21,22 @@ public class FastTemplate {
 
         while (t-- > 0) {
 
+            int day = sc.nextInt(), dis = sc.nextInt(), A = sc.nextInt(), B = sc.nextInt(), C = sc.nextInt();
+
+            int d1 = 10, d2 = 21, d3 = 42;
+
+            int maxDist = day * dis;
+
+            int prize = 0;
+
+            if (maxDist >= d1)
+                prize = A;
+            if (maxDist >= d2)
+                prize = B;
+            if (maxDist >= d3)
+                prize = C;
+
+            pw.println(prize);
         }
 
     }

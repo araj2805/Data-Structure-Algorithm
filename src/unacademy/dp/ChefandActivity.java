@@ -1,11 +1,12 @@
-package Template;
+package unacademy.dp;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class FastTemplate {
+//https://www.codechef.com/UADPIP01/problems/CHACTY
+public class ChefandActivity {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -21,7 +22,37 @@ public class FastTemplate {
 
         while (t-- > 0) {
 
+            int n = sc.nextInt();
+            ;
+
+            long[][] activity = new long[n][3];
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < 3; j++) {
+                    activity[i][j] = sc.nextLong();
+                }
+            }
+
+            long[][] dp = new long[n + 1][3 + 1];
+
+            Long ans = 0l;
+
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= 3; j++) {
+                    if (j == 1) {
+                        dp[i][j] = activity[i - 1][j - 1] + Math.max(dp[i - 1][j + 1], dp[i - 1][j + 2]);
+                    } else if (j == 2) {
+                        dp[i][j] = activity[i - 1][j - 1] + Math.max(dp[i - 1][j - 1], dp[i - 1][j + 1]);
+                    } else if (j == 3) {
+                        dp[i][j] = activity[i - 1][j - 1] + Math.max(dp[i - 1][j - 2], dp[i - 1][j - 1]);
+                    }
+
+                    ans = Math.max(dp[i][j], ans);
+                }
+            }
+            pw.println(ans);
         }
+
 
     }
 

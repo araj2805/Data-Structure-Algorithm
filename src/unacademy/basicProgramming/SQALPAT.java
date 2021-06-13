@@ -1,11 +1,11 @@
-package Template;
+package unacademy.basicProgramming;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class FastTemplate {
+public class SQALPAT {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -17,10 +17,28 @@ public class FastTemplate {
 
     public static void solve(InputReader sc, PrintWriter pw) {
 
-        int t = sc.nextInt();
+        int n = sc.nextInt();
 
-        while (t-- > 0) {
-
+        int x = 0;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                if (i > 0)
+                    x = x + 5;
+                for (int j = 0; j < 5; j++) {
+                    x++;
+                    pw.print(x + " ");
+                }
+            }
+            x++;
+            if (i % 2 != 0) {
+                x = x + 5;
+                for (int j = 0; j < 5; j++) {
+                    x--;
+                    pw.print(x + " ");
+                }
+            }
+            x--;
+            pw.println();
         }
 
     }

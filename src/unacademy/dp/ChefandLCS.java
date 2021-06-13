@@ -1,11 +1,12 @@
-package Template;
+package unacademy.dp;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class FastTemplate {
+//https://www.codechef.com/UADPIP01/problems/CHSUBSQ
+public class ChefandLCS {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -20,6 +21,22 @@ public class FastTemplate {
         int t = sc.nextInt();
 
         while (t-- > 0) {
+
+            String a = sc.next(), b = sc.next();
+            int n = a.length(), m = b.length();
+
+            int[][] dp = new int[n + 1][m + 1];
+
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= m; j++) {
+                    if (a.charAt(i - 1) == b.charAt(j - 1))
+                        dp[i][j] = dp[i - 1][j - 1] + 1;
+                    else
+                        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+
+            pw.println(dp[n][m]);
 
         }
 

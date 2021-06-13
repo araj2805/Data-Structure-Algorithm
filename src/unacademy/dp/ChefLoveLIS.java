@@ -1,11 +1,13 @@
-package Template;
+package unacademy.dp;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class FastTemplate {
+//https://www.codechef.com/UADPIP01/problems/CHLIS
+public class ChefLoveLIS {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -21,6 +23,25 @@ public class FastTemplate {
 
         while (t-- > 0) {
 
+            int n = sc.nextInt();
+            int[] nums = new int[n];
+
+            inputArray(nums, n, sc);
+
+            long[] dp = new long[n];
+            Arrays.fill(dp, 1);
+
+            long ans = 0;
+            for (int i = 1; i < n; i++) {
+                for (int j = 0; j < i; j++) {
+                    if (nums[i] >= nums[j])
+                        dp[i] = Math.max(dp[i], dp[j] + 1);
+
+                    ans = Math.max(dp[i], ans);
+                }
+            }
+
+            pw.println(ans);
         }
 
     }

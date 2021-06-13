@@ -1,11 +1,15 @@
-package Template;
+package unacademy.dp;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class FastTemplate {
+/*
+ * https://www.codechef.com/UADPIP01/problems/BLJUMP
+ * */
+public class JumpOverBuildings {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -21,6 +25,31 @@ public class FastTemplate {
 
         while (t-- > 0) {
 
+            long n = sc.nextInt(), k = sc.nextInt();
+
+            long[] nums = new long[(int) n];
+            inputArray(nums, (int) n, sc);
+            long[] dp = new long[(int) n];
+
+            Arrays.fill(dp, Long.MAX_VALUE);
+            dp[0] = 0;
+
+            for (int i = 1; i < n; i++) {
+
+                for (int j = 1; j <= k; j++) {
+
+                    if (i - j < 0)
+                        break;
+
+                    dp[i] = Math.min(dp[i], dp[i - j] + Math.abs(nums[i] - nums[i - j]));
+
+                }
+
+
+            }
+
+            pw.println(dp[(int) (n - 1)]);
+
         }
 
     }
@@ -29,7 +58,7 @@ public class FastTemplate {
         return (new StringBuilder(s)).reverse().toString();
     }
 
-    static void inputArray(int[] nums, int n, InputReader sc) {
+    static void inputArray(long[] nums, int n, InputReader sc) {
         for (int i = 0; i < n; i++)
             nums[i] = sc.nextInt();
     }

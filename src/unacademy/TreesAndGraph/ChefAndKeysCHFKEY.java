@@ -1,15 +1,11 @@
-package unacademy.dp;
+package unacademy.TreesAndGraph;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.StringTokenizer;
+import java.util.*;
 
-//https://www.codechef.com/UADPIP01/problems/CHMATRIX
-public class ChefVisitsMatrix {
-    static final long mod = (long) (1e9 + 7);
+//https://www.codechef.com/UATG002/problems/CHFKEY
 
+public class ChefandKeysCHFKEY {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -23,50 +19,50 @@ public class ChefVisitsMatrix {
 
         int t = sc.nextInt();
 
+        outer:
         while (t-- > 0) {
-            int n = sc.nextInt(), m = sc.nextInt(), k = sc.nextInt();
 
-            long[][] grid = new long[n][m];
+            int n = sc.nextInt();
+            int nodes = n;
 
-            Arrays.stream(grid).forEach(a -> Arrays.fill(a, 1));
-
-            for (int i = 0; i < n; i++)
-                grid[i][0] = 1;
-            for (int j = 0; j < m; j++)
-                grid[0][j] = 1;
-
-            while (k-- > 0) {
-                int x = sc.nextInt(), y = sc.nextInt();
-                x--;
-                y--;
-                grid[x][y] = 0;
+            List<List<Integer>> adjList = new ArrayList<>(n);
+            int room = 0;
+            while (n-- > 0) {
+                int k = sc.nextInt();
+                List<Integer> key = new ArrayList<>();
+                while (k-- > 0) {
+                    key.add(sc.nextInt());
+                }
+                adjList.add(key);
             }
 
-            if (grid[0][0] == 0) {
-                pw.println(0);
-                return;
-            }
+            boolean[] visited = new boolean[nodes];
 
+            Queue<Integer> q = new LinkedList<>();
 
-            for (int i = 1; i < n; i++) {
-                if (grid[i - 1][0] == 0)
-                    grid[i][0] = 0;
-            }
+            q.add(0);
+            visited[0] = true;
 
-            for (int j = 1; j < m; j++) {
-                if (grid[0][j - 1] == 0)
-                    grid[0][j] = 0;
-            }
+            while (q.isEmpty() == false) {
 
-            for (int i = 1; i < n; i++) {
-                for (int j = 1; j < m; j++) {
-                    if (grid[i][j] != 0)
-                        grid[i][j] = ((grid[i - 1][j] % mod + grid[i][j - 1] % mod) % mod);
+                int currNode = q.poll();
+
+                for (int nbr : adjList.get(currNode)) {
+                    if (visited[nbr] == false) {
+                        q.add(nbr);
+                        visited[nbr] = true;
+                    }
                 }
             }
 
-            pw.println(grid[n - 1][m - 1]);
+            for (boolean a : visited) {
+                if (a == false) {
+                    pw.println("NO");
+                    continue outer;
+                }
+            }
 
+            pw.println("YES");
         }
 
     }

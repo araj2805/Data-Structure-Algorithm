@@ -15,6 +15,9 @@ public class FastTemplate {
         out.close();
     }
 
+    public static long MOD = (long) (1e9 + 7);
+
+
     public static void solve(InputReader sc, PrintWriter pw) {
 
         int t = sc.nextInt();
@@ -23,6 +26,23 @@ public class FastTemplate {
 
         }
 
+    }
+
+    static long add(long a, long b, long m) {
+        return (((a % m) + (b % m)) % m);
+    }
+
+    static long subtract(long a, long b, long m) {
+        return (((a % m) - (b % m) + m) % m);
+    }
+
+    static long multiply(long a, long b, long mod) {
+        return (((a % mod) * (b % mod)) % mod);
+    }
+
+    static long divide(long a, long b, long m) {
+        long temp = modInverse(b, m);
+        return multiply(a, temp, m);
     }
 
     static String reverse(String s) {

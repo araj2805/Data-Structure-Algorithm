@@ -1,14 +1,12 @@
-package unacademy.dp;
+package codechef.contest;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-//https://www.codechef.com/UADPIP01/problems/CHMATRIX
-public class ChefVisitsMatrix {
-    static final long mod = (long) (1e9 + 7);
+public class SLPCYCLE {
+    public static long MOD = (long) (1e9 + 7);
 
     public static void main(String[] args) {
         InputStream inputStream = System.in;
@@ -24,51 +22,61 @@ public class ChefVisitsMatrix {
         int t = sc.nextInt();
 
         while (t-- > 0) {
-            int n = sc.nextInt(), m = sc.nextInt(), k = sc.nextInt();
+            int l = sc.nextInt(), h = sc.nextInt();
 
-            long[][] grid = new long[n][m];
+            String str = sc.next();
 
-            Arrays.stream(grid).forEach(a -> Arrays.fill(a, -1));
+            boolean ok = isOk(str, l, h);
 
-            for (int i = 0; i < n; i++)
-                grid[i][0] = 1;
-            for (int j = 0; j < m; j++)
-                grid[0][j] = 1;
-
-            while (k-- > 0) {
-                int x = sc.nextInt(), y = sc.nextInt();
-                x--;
-                y--;
-                grid[x][y] = 0;
-            }
-
-            if (grid[0][0] == 0) {
-                pw.println(0);
-                return;
-            }
-
-
-            for (int i = 1; i < n; i++) {
-                if (grid[i - 1][0] == 0)
-                    grid[i][0] = 0;
-            }
-
-            for (int j = 1; j < m; j++) {
-                if (grid[0][j - 1] == 0)
-                    grid[0][j] = 0;
-            }
-
-            for (int i = 1; i < n; i++) {
-                for (int j = 1; j < m; j++) {
-                    if (grid[i][j] != 0)
-                        grid[i][j] = ((grid[i - 1][j] % mod + grid[i][j - 1] % mod) % mod);
-                }
-            }
-
-            pw.println(grid[n - 1][m - 1]);
+            pw.println(ok ? "YES" : "NO");
 
         }
 
+    }
+
+    public static boolean isOk(String str, int l, int h) {
+        int consecZero = 0;
+        int sleepHr = 0;
+
+
+        for (int i = 0; i < l; i++) {
+            if (str.charAt(i) == '0') {
+                consecZero++;
+            } else {
+                sleepHr += consecZero;
+
+                if (sleepHr != 0 && sleepHr <= h) {
+                    h = h - sleepHr;
+                    h = h * 2;
+                } else if (h <= 0)
+                    return true;
+                consecZero = 0;
+            }
+        }
+
+        if (consecZero > 0) {
+            h = h - consecZero;
+        }
+
+        return h <= 0 ? true : false;
+
+    }
+
+    static long add(long a, long b, long m) {
+        return (((a % m) + (b % m)) % m);
+    }
+
+    static long subtract(long a, long b, long m) {
+        return (((a % m) - (b % m) + m) % m);
+    }
+
+    static long multiply(long a, long b, long mod) {
+        return (((a % mod) * (b % mod)) % mod);
+    }
+
+    static long divide(long a, long b, long m) {
+        long temp = modInverse(b, m);
+        return multiply(a, temp, m);
     }
 
     static String reverse(String s) {

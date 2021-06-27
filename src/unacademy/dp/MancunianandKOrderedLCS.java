@@ -2,14 +2,11 @@ package unacademy.dp;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-//https://www.codechef.com/UADPIP01/problems/CHMATRIX
-public class ChefVisitsMatrix {
-    static final long mod = (long) (1e9 + 7);
-
+//https://code.hackerearth.com/problem/algorithm/mancunian-and-k-ordered-lcs-e6a4b8c6/
+public class MancunianandKOrderedLCS {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -21,54 +18,42 @@ public class ChefVisitsMatrix {
 
     public static void solve(InputReader sc, PrintWriter pw) {
 
-        int t = sc.nextInt();
+        int n = sc.nextInt(), m = sc.nextInt(), k = sc.nextInt();
+        ;
+        int[] a = new int[n];
+        int[] b = new int[m];
 
-        while (t-- > 0) {
-            int n = sc.nextInt(), m = sc.nextInt(), k = sc.nextInt();
+        inputArray(a, n, sc);
+        inputArray(b, m, sc);
 
-            long[][] grid = new long[n][m];
+        int[][][] dp = new int[n + 1][m + 1][k + 1];
 
-            Arrays.stream(grid).forEach(a -> Arrays.fill(a, -1));
+        for (int i = 0; i <= n; i++)
+            for (int j = 0; j <= m; j++)
+                for (int z = 0; z <= k; z++)
+                    dp[i][j][k] = -1;
 
-            for (int i = 0; i < n; i++)
-                grid[i][0] = 1;
-            for (int j = 0; j < m; j++)
-                grid[0][j] = 1;
+        pw.println(kOrderLcs(a, b, n, m, k, dp));
 
-            while (k-- > 0) {
-                int x = sc.nextInt(), y = sc.nextInt();
-                x--;
-                y--;
-                grid[x][y] = 0;
-            }
+    }
 
-            if (grid[0][0] == 0) {
-                pw.println(0);
-                return;
-            }
+    private static int kOrderLcs(int[] a, int[] b, int n, int m, int k, int[][][] dp) {
 
+        if (n == 0 || m == 0)
+            return 0;
 
-            for (int i = 1; i < n; i++) {
-                if (grid[i - 1][0] == 0)
-                    grid[i][0] = 0;
-            }
+        if (dp[n][m][k] != -1)
+            return dp[n][m][k];
 
-            for (int j = 1; j < m; j++) {
-                if (grid[0][j - 1] == 0)
-                    grid[0][j] = 0;
-            }
+        int ans = Math.max(dp[n - 1][m][k], dp[n][m - 1][k]);
 
-            for (int i = 1; i < n; i++) {
-                for (int j = 1; j < m; j++) {
-                    if (grid[i][j] != 0)
-                        grid[i][j] = ((grid[i - 1][j] % mod + grid[i][j - 1] % mod) % mod);
-                }
-            }
+        if (a[n - 1] == b[m - 1])
+            ans = Math.max(ans, dp[n - 1][m - 1][k] + 1);
+//            dp[n][m][k] =  dp[n - 1][m - 1][k] + 1;
+        if (k > 0)
+            ans = Math.max(ans, dp[n - 1][m - 1][k - 1] + 1);
 
-            pw.println(grid[n - 1][m - 1]);
-
-        }
-
+        return ans;
     }
 
     static String reverse(String s) {

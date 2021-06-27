@@ -1,14 +1,13 @@
-package unacademy.dp;
+package BasicDataStructure;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.StringTokenizer;
 
-//https://www.codechef.com/UADPIP01/problems/CHMATRIX
-public class ChefVisitsMatrix {
-    static final long mod = (long) (1e9 + 7);
+public class FindMaximumInEveryWindow {
+    public static long MOD = (long) (1e9 + 7);
 
     public static void main(String[] args) {
         InputStream inputStream = System.in;
@@ -24,51 +23,45 @@ public class ChefVisitsMatrix {
         int t = sc.nextInt();
 
         while (t-- > 0) {
-            int n = sc.nextInt(), m = sc.nextInt(), k = sc.nextInt();
 
-            long[][] grid = new long[n][m];
+            int n = sc.nextInt(), k = sc.nextInt();
+            int[] nums = new int[n];
 
-            Arrays.stream(grid).forEach(a -> Arrays.fill(a, -1));
+            inputArray(nums, n, sc);
 
-            for (int i = 0; i < n; i++)
-                grid[i][0] = 1;
-            for (int j = 0; j < m; j++)
-                grid[0][j] = 1;
+            List<Integer> ans = maximumElement(nums, k, n);
 
-            while (k-- > 0) {
-                int x = sc.nextInt(), y = sc.nextInt();
-                x--;
-                y--;
-                grid[x][y] = 0;
-            }
+            for (int a : ans)
+                pw.print(a + " ");
 
-            if (grid[0][0] == 0) {
-                pw.println(0);
-                return;
-            }
-
-
-            for (int i = 1; i < n; i++) {
-                if (grid[i - 1][0] == 0)
-                    grid[i][0] = 0;
-            }
-
-            for (int j = 1; j < m; j++) {
-                if (grid[0][j - 1] == 0)
-                    grid[0][j] = 0;
-            }
-
-            for (int i = 1; i < n; i++) {
-                for (int j = 1; j < m; j++) {
-                    if (grid[i][j] != 0)
-                        grid[i][j] = ((grid[i - 1][j] % mod + grid[i][j - 1] % mod) % mod);
-                }
-            }
-
-            pw.println(grid[n - 1][m - 1]);
-
+            pw.println();
         }
 
+    }
+
+    private static List<Integer> maximumElement(int[] nums, int k, int n) {
+
+        List<Integer> ans = new ArrayList<>();
+
+
+        return null;
+    }
+
+    static long add(long a, long b, long m) {
+        return (((a % m) + (b % m)) % m);
+    }
+
+    static long subtract(long a, long b, long m) {
+        return (((a % m) - (b % m) + m) % m);
+    }
+
+    static long multiply(long a, long b, long mod) {
+        return (((a % mod) * (b % mod)) % mod);
+    }
+
+    static long divide(long a, long b, long m) {
+        long temp = modInverse(b, m);
+        return multiply(a, temp, m);
     }
 
     static String reverse(String s) {

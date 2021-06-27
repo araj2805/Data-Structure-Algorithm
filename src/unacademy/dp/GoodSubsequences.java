@@ -2,13 +2,12 @@ package unacademy.dp;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-//https://www.codechef.com/UADPIP01/problems/CHMATRIX
-public class ChefVisitsMatrix {
-    static final long mod = (long) (1e9 + 7);
+//https://www.codechef.com/UADPIP01/problems/GOODSTR
+public class GoodSubsequences {
+    public static long mod = (long) (1e9 + 7);
 
     public static void main(String[] args) {
         InputStream inputStream = System.in;
@@ -24,52 +23,53 @@ public class ChefVisitsMatrix {
         int t = sc.nextInt();
 
         while (t-- > 0) {
-            int n = sc.nextInt(), m = sc.nextInt(), k = sc.nextInt();
 
-            long[][] grid = new long[n][m];
+            String s = sc.next();
 
-            Arrays.stream(grid).forEach(a -> Arrays.fill(a, -1));
+            int regex = 3;
+            long[][] dp = new long[s.length()][regex];
 
-            for (int i = 0; i < n; i++)
-                grid[i][0] = 1;
-            for (int j = 0; j < m; j++)
-                grid[0][j] = 1;
+            for (int i = 0; i < s.length(); i++) {
+                char ch = s.charAt(i);
+                for (int j = 0; j < 3; j++) {
 
-            while (k-- > 0) {
-                int x = sc.nextInt(), y = sc.nextInt();
-                x--;
-                y--;
-                grid[x][y] = 0;
-            }
-
-            if (grid[0][0] == 0) {
-                pw.println(0);
-                return;
-            }
-
-
-            for (int i = 1; i < n; i++) {
-                if (grid[i - 1][0] == 0)
-                    grid[i][0] = 0;
-            }
-
-            for (int j = 1; j < m; j++) {
-                if (grid[0][j - 1] == 0)
-                    grid[0][j] = 0;
-            }
-
-            for (int i = 1; i < n; i++) {
-                for (int j = 1; j < m; j++) {
-                    if (grid[i][j] != 0)
-                        grid[i][j] = ((grid[i - 1][j] % mod + grid[i][j - 1] % mod) % mod);
+                    if (i > 0)
+                        dp[i][j] = dp[i - 1][j];
                 }
+                dp[i][ch - 'a'] = multiply(dp[i][ch - 'a'], 2, mod);
+
+                if (ch == 'a') {
+                    dp[i][ch - 'a']++;
+                    dp[i][ch - 'a'] %= mod;
+                } else if (i > 0) {
+                    dp[i][ch - 'a'] = add(dp[i][ch - 'a'], dp[i][ch - 'a' - 1], mod);
+                }
+
+
             }
-
-            pw.println(grid[n - 1][m - 1]);
-
+            pw.println(dp[s.length() - 1][regex - 1]);
         }
 
+
     }
+
+    static long add(long a, long b, long m) {
+        return (((a % m) + (b % m)) % m);
+    }
+
+    static long subtract(long a, long b, long m) {
+        return (((a % m) - (b % m) + m) % m);
+    }
+
+    static long multiply(long a, long b, long mod) {
+        return (((a % mod) * (b % mod)) % mod);
+    }
+
+    static long divide(long a, long b, long m) {
+        long temp = modInverse(b, m);
+        return multiply(a, temp, m);
+    }
+
 
     static String reverse(String s) {
         return (new StringBuilder(s)).reverse().toString();

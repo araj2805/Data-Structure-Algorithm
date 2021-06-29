@@ -3,6 +3,7 @@ package Template;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class FastTemplate {
@@ -26,6 +27,52 @@ public class FastTemplate {
 
         }
 
+    }
+
+    public static abstract class Graph {
+        int nodes;
+        List<List<Integer>> adjList;
+
+        public Graph(int nodes) {
+            this.nodes = nodes;
+            this.adjList = new ArrayList<>(nodes);
+
+            for (int i = 0; i < nodes; i++)
+                this.adjList.add(new ArrayList<>());
+        }
+
+        abstract void addEdge(int node1, int node2);
+
+        void printGraph() {
+            for (int i = 0; i < nodes; i++)
+                System.out.println(i + " => " + adjList.get(i));
+        }
+
+    }
+
+    public static class DirectedGraph extends Graph {
+
+        public DirectedGraph(int nodes) {
+            super(nodes);
+        }
+
+        @Override
+        void addEdge(int node1, int node2) {
+            adjList.get(node1).add(node2);
+        }
+    }
+
+    public static class UnDirectedGraph extends Graph {
+
+        public UnDirectedGraph(int nodes) {
+            super(nodes);
+        }
+
+        @Override
+        void addEdge(int node1, int node2) {
+            adjList.get(node1).add(node2);
+            adjList.get(node2).add(node1);
+        }
     }
 
     static long add(long a, long b, long m) {

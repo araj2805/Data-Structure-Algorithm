@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Graph {
 
-    private HashMap<String, Vertex> nodes;
+    public HashMap<String, Vertex> nodes;
 
     public Graph() {
         this.nodes = new HashMap<>();
@@ -256,7 +256,7 @@ public class Graph {
         return isConnected() == true && isCyclic() == false;
     }
 
-    private class Vertex {
+    public class Vertex {
         HashMap<String, Integer> neighbourVertex = new HashMap<>();
     }
 

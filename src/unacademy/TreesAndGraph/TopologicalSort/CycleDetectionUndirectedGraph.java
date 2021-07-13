@@ -23,11 +23,11 @@ public class CycleDetectionUndirectedGraph {
 
         Map<String, Boolean> visited = new HashMap<>();
 
-        System.out.println(cycleDetection(graph));
+//        System.out.println(cycleDetection(graph));
 
     }
 
-    private static boolean cycleDetection(Graph graph) {
+    /*private static boolean cycleDetection(Graph graph) {
 
         Map<String, Boolean> visited = new HashMap<>();
 
@@ -53,5 +53,5 @@ public class CycleDetectionUndirectedGraph {
         }
 
         return false;
-    }
+    }*/
 }

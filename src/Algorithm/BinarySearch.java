@@ -2,6 +2,7 @@ package Algorithm;
 
 import java.util.Scanner;
 
+
 public class BinarySearch {
 
     public static int binarySearch(int[] a, int low, int high, int key) {
